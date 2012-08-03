@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xmlns:aop="http://www.springframework.org/schema/aop"
+		xmlns:tx="http://www.springframework.org/schema/tx"
+		xmlns:tool="http://www.springframework.org/schema/tool"
+		xmlns:context="http://www.springframework.org/schema/context"
+		xsi:schemaLocation="
+		http://www.springframework.org/schema/beans 
+		http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+		http://www.springframework.org/schema/aop
+    	http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+    	http://www.springframework.org/schema/tx
+		http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+		http://www.springframework.org/schema/context
+		http://www.springframework.org/schema/context/spring-context-3.0.xsd
+		">
+
+	<bean id="HibernateFilter" class="com.playlife.utility.HibernateSessionFilter">
+		<property name="sessionFactory"><ref bean="sessionFactory"/></property>
+	</bean>
+    
+   	<!-- =====================================
+	|										 | 
+	|		 Resolve Locale Message 		 |
+	|										 |
+	======================================= -->
+	<bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+       	<property name="basenames"><list>
+       		<value>classpath:locale\messages</value>
+       		<value>classpath:errors\validationError</value>
+       		<value>classpath:errors\presentationError</value>
+       		<value>classpath:errors\logicError</value>
+       		<value>classpath:errors\persistenceError</value>
+       	</list></property>
+       	<property name="defaultEncoding" value="UTF-8"/>
+   	</bean>
+   	
+	<bean id="localeResolver" class="org.springframework.web.servlet.i18n.CookieLocaleResolver">
+		<property name="cookieName" value="locale" />
+		<property name="defaultLocale" value="en" />
+	</bean>
+   	
+   	<!-- =====================================
+	|										 | 
+	|			Datebase Config		 		 |
+	|										 |
+	======================================= -->
+	<bean id="mysqlConfig" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="location">
+			<value>/WEB-INF/mysql.properties</value>
+		</property>
+	</bean>
+	
+    <bean id="namingStrategy" class="org.springframework.beans.factory.config.FieldRetrievingFactoryBean">
+        <property name="staticField">
+            <value>org.hibernate.cfg.ImprovedNamingStrategy.INSTANCE</value>
+        </property>
+    </bean>
+	
+    <bean id="extendedFinderNamingStrategy" class="com.playlife.persistenceLayer.DAO.genericDAO.ExtendedFinderNamingStrategy" />
+    
+	<bean id="mysqlDataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource" depends-on="mysqlConfig">
+		<property name="driverClassName" value="${jdbc.driverClassName}" />
+		<property name="url" value="${jdbc.url}" />
+		<property name="username" value="${jdbc.username}" />
+		<property name="password" value="${jdbc.password}" />
+	</bean>
+	
+	<bean id="sessionFactory" class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean" depends-on="mysqlConfig">
+		<property name="namingStrategy"><ref bean="namingStrategy"/></property>	
+		<property name="dataSource" ref="mysqlDataSource" />
+		<property name="hibernateProperties">
+            <props>
+                <prop key="hibernate.dialect">${jdbc.dialect}</prop>
+                <prop key="hibernate.show_sql">true</prop>
+                <prop key="hibernate.hbm2ddl.auto">update</prop>
+                <prop key="hibernate.current_session_context_class">managed</prop>
+                <prop key="hibernate.cache.use_second_level_cache">false</prop>
+                <prop key="hibernate.cache.use_query_cache">false</prop>             
+            </props>
+        </property>
+        <property name="annotatedClasses">
+        	<list> 
+				<!-- Add Domain Object here -->
+				<value>com.playlife.persistenceLayer.domainObject.Address</value>
+				<value>com.playlife.persistenceLayer.domainObject.Book</value>
+				<value>com.playlife.persistenceLayer.domainObject.BookSet</value>
+				<value>com.playlife.persistenceLayer.domainObject.BookSupport</value>
+				<value>com.playlife.persistenceLayer.domainObject.Comment</value>
+				<value>com.playlife.persistenceLayer.domainObject.Log</value>
+				<value>com.playlife.persistenceLayer.domainObject.PhotoContent</value>
+				<value>com.playlife.persistenceLayer.domainObject.Place</value>
+				<value>com.playlife.persistenceLayer.domainObject.PlaceRating</value>
+				<value>com.playlife.persistenceLayer.domainObject.Report</value>
+				<value>com.playlife.persistenceLayer.domainObject.Sheet</value>
+				<value>com.playlife.persistenceLayer.domainObject.Tag</value>
+				<value>com.playlife.persistenceLayer.domainObject.TextContent</value>
+ 				<value>com.playlife.persistenceLayer.domainObject.User</value>
+ 				<value>com.playlife.persistenceLayer.domainObject.UserLog</value>
+ 			</list>
+ 		</property>
+	</bean>
+	
+   	<!-- =====================================
+	|										 | 
+	|			 Generic DAO		 		 |
+	|										 |
+	======================================= -->
+    <bean id="finderIntroductionAdvisor" class="com.playlife.persistenceLayer.DAO.genericDAO.FinderIntroductionAdvisor"/>
+    <bean id="abstractDaoTarget" class="com.playlife.persistenceLayer.DAO.genericDAO.GenericDAO" abstract="true">
+        <property name="sessionFactory"><ref bean="sessionFactory"/></property>
+        <property name="namingStrategy"><ref bean="extendedFinderNamingStrategy" /></property>
+    </bean>
+    <bean id="abstractDao" class="org.springframework.aop.framework.ProxyFactoryBean" abstract="true">
+        <property name="interceptorNames"><list>
+			<value>finderIntroductionAdvisor</value>
+		</list></property>
+    </bean>
+    
+    <bean id="addressDAO" parent="abstractDao">
+	    <property name="proxyInterfaces"><value>com.playlife.persistenceLayer.DAO.AddressDAO</value></property>
+	    <property name="target"><bean parent="abstractDaoTarget">
+			<constructor-arg><value>com.playlife.persistenceLayer.domainObject.Address</value></constructor-arg>
+		</bean></property>
+	</bean>
+	<bean id="bookDAO" parent="abstractDao">
+	    <property name="proxyInterfaces"><value>com.playlife.persistenceLayer.DAO.BookDAO</value></property>
+	    <property name="target"><bean parent="abstractDaoTarget">
+			<constructor-arg><value>com.playlife.persistenceLayer.domainObject.Book</value></constructor-arg>
+		</bean></property>
+	</bean>
+	<bean id="bookSetDAO" parent="abstractDao">
+	    <property name="proxyInterfaces"><value>com.playlife.persistenceLayer.DAO.BookSetDAO</value></property>
+	    <property name="target"><bean parent="abstractDaoTarget">
+			<constructor-arg><value>com.playlife.persistenceLayer.domainObject.BookSet</value></constructor-arg>
+		</bean></property>
+	</bean>
+	<bean id="bookSupportDAO" parent="abstractDao">
+	    <property name="proxyInterfaces"><value>com.playlife.persistenceLayer.DAO.BookSupportDAO</value></property>
+	    <property name="target"><bean parent="abstractDaoTarget">
+			<constructor-arg><value>com.playlife.persistenceLayer.domainObject.BookSupport</value></constructor-arg>
+		</bean></property>
+	</bean>
+	<bean id="commentDAO" parent="abstractDao">
+	    <property name="proxyInterfaces"><value>com.playlife.persistenceLayer.DAO.CommentDAO</value></property>
+	    <property name="target"><bean parent="abstractDaoTarget">
+			<constructor-arg><value>com.playlife.persistenceLayer.domainObject.Comment</value></constructor-arg>
+		</bean></property>
+	</bean>		
+	<bean id="logDAO" parent="abstractDao">
+	    <property name="proxyInterfaces"><value>com.playlife.persistenceLayer.DAO.LogDAO</value></property>
+	    <property name="target"><bean parent="abstractDaoTarget">
+	    	<constructor-arg><value>com.playlife.persistenceLayer.domainObject.Log</value></constructor-arg>
+	    </bean></property>
+	</bean>
+	<bean id="photoContentDAO" parent="abstractDao">
+	    <property name="proxyInterfaces"><value>com.playlife.persistenceLayer.DAO.PhotoContentDAO</value></property>
+	    <property name="target"><bean parent="abstractDaoTarget">
+			<constructor-arg><value>com.playlife.persistenceLayer.domainObject.PhotoContent</value></constructor-arg>
+		</bean></property>
+	</bean>	
+	<bean id="placeDAO" parent="abstractDao">
+	    <property name="proxyInterfaces"><value>com.playlife.persistenceLayer.DAO.PlaceDAO</value></property>
+	    <property name="target"><bean parent="abstractDaoTarget">
+			<constructor-arg><value>com.playlife.persistenceLayer.domainObject.Place</value></constructor-arg>
+		</bean></property>
+	</bean>
+	<bean id="placeRatingDAO" parent="abstractDao">
+	    <property name="proxyInterfaces"><value>com.playlife.persistenceLayer.DAO.PlaceRatingDAO</value></property>
+	    <property name="target"><bean parent="abstractDaoTarget">
+			<constructor-arg><value>com.playlife.persistenceLayer.domainObject.PlaceRating</value></constructor-arg>
+		</bean></property>
+	</bean>	
+	<bean id="reportDAO" parent="abstractDao">
+	    <property name="proxyInterfaces"><value>com.playlife.persistenceLayer.DAO.ReportDAO</value></property>
+	    <property name="target"><bean parent="abstractDaoTarget">
+			<constructor-arg><value>com.playlife.persistenceLayer.domainObject.Report</value></constructor-arg>
+		</bean></property>
+	</bean>	
+	<bean id="sheetDAO" parent="abstractDao">
+	    <property name="proxyInterfaces"><value>com.playlife.persistenceLayer.DAO.SheetDAO</value></property>
+	    <property name="target"><bean parent="abstractDaoTarget">
+			<constructor-arg><value>com.playlife.persistenceLayer.domainObject.Sheet</value></constructor-arg>
+		</bean></property>
+	</bean>
+	<bean id="tagDAO" parent="abstractDao">
+	    <property name="proxyInterfaces"><value>com.playlife.persistenceLayer.DAO.TagDAO</value></property>
+	    <property name="target"><bean parent="abstractDaoTarget">
+			<constructor-arg><value>com.playlife.persistenceLayer.domainObject.Tag</value></constructor-arg>
+		</bean></property>
+	</bean>	
+	<bean id="textContentDAO" parent="abstractDao">
+	    <property name="proxyInterfaces"><value>com.playlife.persistenceLayer.DAO.TextContentDAO</value></property>
+	    <property name="target"><bean parent="abstractDaoTarget">
+			<constructor-arg><value>com.playlife.persistenceLayer.domainObject.TextContent</value></constructor-arg>
+		</bean></property>
+	</bean>
+	<bean id="userDAO" parent="abstractDao">
+	    <property name="proxyInterfaces"><value>com.playlife.persistenceLayer.DAO.UserDAO</value></property>
+	    <property name="target"><bean parent="abstractDaoTarget">
+	    	<constructor-arg><value>com.playlife.persistenceLayer.domainObject.User</value></constructor-arg>
+	    </bean></property>
+	</bean>
+	<bean id="userLogDAO" parent="abstractDao">
+	    <property name="proxyInterfaces"><value>com.playlife.persistenceLayer.DAO.UserLogDAO</value></property>
+	    <property name="target"><bean parent="abstractDaoTarget">
+	    	<constructor-arg><value>com.playlife.persistenceLayer.domainObject.UserLog</value></constructor-arg>
+	    </bean></property>
+	</bean>
+	
+    <!-- =====================================
+	|										 | 
+	|			Captcha Setting		 		 |
+	|										 |
+	======================================= -->
+	<bean id="captcha" class="com.playlife.utility.captcha.OrderingCaptcha">
+	 	<constructor-arg type="String" index="0" value="PlayLife"/>
+	</bean>
+	
+</beans>

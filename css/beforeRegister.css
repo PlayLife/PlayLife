@@ -1,0 +1,21 @@
+#div_beforeRegister{
+	margin-top: 20px;	
+}
+
+.beforeRegister_header{
+	font-size:36px;
+	font-family:"Comic Sans MS", cursive;
+	color:#996633;
+	font-weight:bold;
+}
+
+.beforeRegister_content{
+	font-size:20px;
+	color:#000;
+}
+
+#div_beforeRegister_next{
+	text-align:right;
+	margin-top: 20px;
+	margin-right: 20px;
+}
