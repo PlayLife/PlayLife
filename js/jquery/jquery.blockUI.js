@@ -1,4 +1,4 @@
-ï»¿/*!
+ï»þý*!
  * jQuery blockUI plugin
  * Version 2.41 (03-MAY-2012)
  * @requires jQuery v1.2.3 or later
@@ -221,10 +221,10 @@
 			$(el).data('blockUI.onUnblock', opts.onUnblock);
 			var z = opts.baseZ;
 
-			// blockUI uses 3 layers for blocking, for simplicity they are all used on every platform;
-			// layer1 is the iframe layer which is used to supress bleed through of underlying content
-			// layer2 is the overlay layer which has opacity and a wait cursor (by default)
-			// layer3 is the message content that is displayed while blocking
+			// blockUI uses 3 s for blocking, for simplicity they are all used on every platform;
+			// 1 is the iframe  which is used to supress bleed through of underlying content
+			// 2 is the overlay  which has opacity and a wait cursor (by default)
+			// 3 is the message content that is displayed while blocking
 
 			var lyr1 = ($.browser.msie || opts.forceIframe)
 				? $('<iframe class="blockUI" style="z-index:'+ (z++) +';display:none;border:none;margin:0;padding:0;position:absolute;width:100%;height:100%;top:0;left:0" src="'+opts.iframeSrc+'"></iframe>')
@@ -270,13 +270,13 @@
 				lyr2.css(opts.overlayCSS);
 			lyr2.css('position', full ? 'fixed' : 'absolute');
 
-			// make iframe layer transparent in IE
+			// make iframe  transparent in IE
 			if ($.browser.msie || opts.forceIframe)
 				lyr1.css('opacity',0.0);
 
 			//$([lyr1[0],lyr2[0],lyr3[0]]).appendTo(full ? 'body' : el);
-			var layers = [lyr1,lyr2,lyr3], $par = full ? $('body') : $(el);
-			$.each(layers, function() {
+			var s = [lyr1,lyr2,lyr3], $par = full ? $('body') : $(el);
+			$.each(s, function() {
 				this.appendTo($par);
 			});
 

@@ -11,7 +11,7 @@ import org.springframework.web.bind.ServletRequestUtils;
 import org.springframework.web.servlet.LocaleResolver;
 import org.springframework.web.servlet.support.RequestContextUtils;
 
-import com.playlife.utility.exceptions.PresentationLayerException;
+import com.playlife.utility.exceptions.PresentationException;
 
 public class LocaleService {
 	public static void resolve(HttpServletRequest request, HttpServletResponse response) {
@@ -28,7 +28,7 @@ public class LocaleService {
 	            }
 	        }
 		} catch (Exception ex){
-			throw new PresentationLayerException(-9999 ,ex);
+			throw new PresentationException(-9999 ,ex);
 		}
 	}
 	

@@ -12,7 +12,7 @@ import net.sf.json.JSONSerializer;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.playlife.utility.exceptions.PresentationLayerException;
+import com.playlife.utility.exceptions.PresentationException;
 
 public class Request {
 	public static Long getLong(HttpServletRequest request, String paraName){
@@ -20,7 +20,7 @@ public class Request {
 		try {
 			l_return = Long.parseLong(request.getParameter(paraName).toString());
 		} catch (Exception ex){
-			throw new PresentationLayerException(-40000, ex, paraName);
+			throw new PresentationException(-40000, ex, paraName);
 		}
 		return l_return;
 	}
@@ -31,7 +31,7 @@ public class Request {
 				return null;
 			l_return = Long.parseLong(request.getParameter(paraName).toString());
 		} catch (Exception ex){
-			throw new PresentationLayerException(-40001, ex, paraName);
+			throw new PresentationException(-40001, ex, paraName);
 		}
 		return l_return;
 	}
@@ -40,7 +40,7 @@ public class Request {
 		try {
 			s_return = request.getParameter(paraName).toString();
 		} catch (Exception ex){
-			throw new PresentationLayerException(-40002, ex, paraName);
+			throw new PresentationException(-40002, ex, paraName);
 		}
 		return s_return;
 	}
@@ -51,7 +51,7 @@ public class Request {
 				return null;
 			else s_return = request.getParameter(paraName).toString();
 		} catch (Exception ex){
-			throw new PresentationLayerException(-40003, ex, paraName);
+			throw new PresentationException(-40003, ex, paraName);
 		}
 		return s_return;
 	}
@@ -60,7 +60,7 @@ public class Request {
 		try {
 			i_return = Integer.parseInt(request.getParameter(paraName).toString());
 		} catch (Exception ex){
-			throw new PresentationLayerException(-40004, ex, paraName);
+			throw new PresentationException(-40004, ex, paraName);
 		}
 		return i_return;
 	}
@@ -71,7 +71,7 @@ public class Request {
 				return -1;
 			i_return = Integer.parseInt(request.getParameter(paraName).toString());
 		} catch (Exception ex){
-			throw new PresentationLayerException(-40005, ex, paraName);
+			throw new PresentationException(-40005, ex, paraName);
 		}
 		return i_return;
 	}
@@ -80,7 +80,7 @@ public class Request {
 		try {
 			b_return = Boolean.parseBoolean(request.getParameter(paraName).toString());
 		} catch (Exception ex){
-			throw new PresentationLayerException(-40012, ex, paraName);
+			throw new PresentationException(-40012, ex, paraName);
 		}
 		return b_return;
 	}
@@ -96,7 +96,7 @@ public class Request {
 				arr_return.add(Long.parseLong(string));
 			
 		} catch (Exception ex){
-			throw new PresentationLayerException(-40006, ex, paraName);
+			throw new PresentationException(-40006, ex, paraName);
 		}
 		return arr_return;
 	}
@@ -112,7 +112,7 @@ public class Request {
 				arr_return.add(string);
 			
 		} catch (Exception ex){
-			throw new PresentationLayerException(-40006, ex, paraName);
+			throw new PresentationException(-40006, ex, paraName);
 		}
 		return arr_return;
 	}
@@ -122,7 +122,7 @@ public class Request {
 			HttpSession session = request.getSession(true); 
 			l_return = Long.parseLong(session.getAttribute(paraName).toString());
 		} catch (Exception ex){
-			throw new PresentationLayerException(-40007, ex, paraName);
+			throw new PresentationException(-40007, ex, paraName);
 		}
 		return l_return;
 	}
@@ -135,19 +135,19 @@ public class Request {
 				return null;
 			l_return = Long.parseLong(session.getAttribute(paraName).toString());
 		} catch (Exception ex){
-			throw new PresentationLayerException(-40008, ex, paraName);
+			throw new PresentationException(-40008, ex, paraName);
 		}
 		return l_return;
 	}
 	
 	@SuppressWarnings("unchecked")
-	public static <T> T getSessionObject(HttpServletRequest request, String paraName, Class<T> classOf) throws PresentationLayerException{
+	public static <T> T getSessionObject(HttpServletRequest request, String paraName, Class<T> classOf) throws PresentationException{
 		try {
 			HttpSession session = request.getSession(true); 
 			
 			return (T)session.getAttribute(paraName);
 		} catch (Exception ex){
-			throw new PresentationLayerException(-40011, ex, paraName);
+			throw new PresentationException(-40011, ex, paraName);
 		}
 		
 	}
@@ -156,34 +156,34 @@ public class Request {
 	 * 		  Object		* 
 	 * 						*
 	 ************************/
-	public static <T> T getObject(HttpServletRequest request, String paraName, Class<T> classOf) throws PresentationLayerException{
+	public static <T> T getObject(HttpServletRequest request, String paraName, Class<T> classOf) throws PresentationException{
 		try {
 			if (request.getParameter(paraName) == null)
-				throw new PresentationLayerException(-40011, paraName);
+				throw new PresentationException(-40011, paraName);
 			
 			Gson gson = new GsonBuilder().setDateFormat("MM/dd/yyyy HH:mm").create();;
 			return gson.fromJson(request.getParameter(paraName), classOf);
 		} catch (Exception ex){
-			throw new PresentationLayerException(-40011, ex, paraName);
+			throw new PresentationException(-40011, ex, paraName);
 		}
 		
 	}
-	public static <T> T getObject(HttpServletRequest request, String paraName, Class<T> classOf, String dateFormat) throws PresentationLayerException{
+	public static <T> T getObject(HttpServletRequest request, String paraName, Class<T> classOf, String dateFormat) throws PresentationException{
 		try {
 			if (request.getParameter(paraName) == null)
-				throw new PresentationLayerException(-40011, paraName);
+				throw new PresentationException(-40011, paraName);
 			
 			Gson gson = new GsonBuilder().setDateFormat(dateFormat).create();;
 			return gson.fromJson(request.getParameter(paraName), classOf);
 		} catch (Exception ex){
-			throw new PresentationLayerException(-40011, ex, paraName);
+			throw new PresentationException(-40011, ex, paraName);
 		}
 		
 	}
-	public static <T> List<T> getArrayObject(HttpServletRequest request, String paraName, Class<T> classOf) throws PresentationLayerException{
+	public static <T> List<T> getArrayObject(HttpServletRequest request, String paraName, Class<T> classOf) throws PresentationException{
 		try {
 			if (request.getParameter(paraName) == null)
-				throw new PresentationLayerException(-40011, paraName);
+				throw new PresentationException(-40011, paraName);
 			
 			List<T> arr_return = new ArrayList<T>();
 			String s_array = request.getParameter(paraName);
@@ -196,7 +196,7 @@ public class Request {
 			
 			return arr_return;			
 		} catch (Exception ex){
-			throw new PresentationLayerException(-40011, ex, paraName);
+			throw new PresentationException(-40011, ex, paraName);
 		}
 	}
 }

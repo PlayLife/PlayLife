@@ -1,9 +1,9 @@
 package com.playlife.utility;
 
-import com.playlife.utility.exceptions.LogicLayerException;
+import com.playlife.utility.exceptions.LogicException;
 
 public class MD5 {
-	public static String getMD5(byte[] source) throws LogicLayerException{
+	public static String getMD5(byte[] source) throws LogicException{
 		String s = null;
 		char hexDigits[] = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd',  'e', 'f'}; 
 		try {
@@ -21,7 +21,7 @@ public class MD5 {
 			s = new String(str);
 		} catch( Exception e ){
 			/*** TODO : ***/
-			throw new LogicLayerException(-9999);
+			throw new LogicException(-9999);
 		}
 		return s;
 	}
