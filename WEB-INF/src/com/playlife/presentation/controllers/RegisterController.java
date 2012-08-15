@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.playlife.logic.user.IPlayLifeUserService;
-import com.playlife.presentation.converters.IErrorConverter;
 import com.playlife.settings.UISetting;
 import com.playlife.utility.captcha.ICaptcha;
 
@@ -20,11 +19,7 @@ public class RegisterController {
 	@Autowired
 	@Qualifier("playLifeUserService")
 	IPlayLifeUserService playLifeUserService;
-	
-	@Autowired
-	@Qualifier("errorConverter")
-	IErrorConverter errorConverter;
-	
+
 	@Autowired
 	@Qualifier("captcha")
 	ICaptcha captcha;

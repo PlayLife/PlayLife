@@ -19,6 +19,7 @@
 		<form action='/user/create.json' method='POST' class='well form-horizontal' id='form_register'>
 			<a class='close pull-right' href='/'><spring:message code="register.cancel"/></a>
 			<legend><h1 class='topic red big'><spring:message code="register.title"/></h1></legend>
+			
 			<!-- Email -->
 			<fieldset>
 				<div class="control-group">

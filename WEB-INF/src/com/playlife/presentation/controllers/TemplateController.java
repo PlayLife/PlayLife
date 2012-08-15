@@ -1,5 +1,7 @@
 package com.playlife.presentation.controllers;
 
+import java.io.IOException;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -46,5 +48,9 @@ public class TemplateController {
 			else 
 				return "template/header_user_loggedin";
 		}
+	}
+	@RequestMapping(value="/locale.js")
+	protected void localeRequest(HttpServletRequest request, HttpServletResponse response) throws IOException {
+		response.sendRedirect("/js/locale/" + LocaleService.getLocale(request).toString()+".js");
 	}
 }

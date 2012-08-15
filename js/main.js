@@ -1,62 +1,30 @@
-//var console = null;
+function cufon(){
+	Cufon.replace('.topic', { fontFamily: 'Helvetica Neue'} );
+}
 
-$('document').ready(function(){
-/*	(function() {
-		var e = document.createElement('script');
-		e.type = 'text/javascript';
-		e.src = document.location.protocol + '//connect.facebook.net/en_US/all.js';
-		e.async = true;
-		document.getElementById('fb-root').appendChild(e);
-	}());*/
+cufon();
+
+var SERVER_ERROR_TITLE = 'Server Error : ';
+var SERVER_ERROR = 'Cannot Connect to Server. Please Refresh.';
+
+function popSuccess(s){
+	$.jGrowl(s, {header: '<span style="color: green">Success</span>'});
+}
+function popFail(s){
+	$.jGrowl(s, {header: '<span style="color: red">Fail</span>'});
+}
+function block(){
+	$.blockUI({ message: '<img src="img/loading.gif"/>' });
+}
+function unblock(){
+	$.unblockUI();
+}
+
+$(document).ready(function(){
+	var page_name = window.location.pathname.substring(1);
+	if (page_name != '')
+		$('li a[href$="/' + page_name + '"]').parent().addClass('active');
 });
-
-function pretendLoading(target){
-	var div_loading = $('<div />').html(' Now loading ... ');
-	$('<img />').attr('src', 'img/loading.gif').css({width : 20, height: 20}).prependTo(div_loading);
-	div_loading.prependTo(target);
-	return div_loading.effect("highlight", {mode: "show"}, "slow").show();
-}
-
-function jsonToString(obj){  
-        var THIS = this;   
-        switch(typeof(obj)){  
-            case 'string':  
-                return '"' + obj.replace(/(["\\])/g, '\\$1') + '"';  
-            case 'array':  
-                return '[' + obj.map(THIS.jsonToString).join(',') + ']';  
-            case 'object':  
-                 if(obj instanceof Array){  
-                    var strArr = [];  
-                    var len = obj.length;  
-                    for(var i=0; i<len; i++){  
-                        strArr.push(THIS.jsonToString(obj[i]));  
-                    }  
-                    return '[' + strArr.join(',') + ']';  
-                }else if(obj==null){  
-                    return 'null';  
-  
-                }else{  
-                    var string = [];  
-                    for (var property in obj) string.push(THIS.jsonToString(property) + ':' + THIS.jsonToString(obj[property]));  
-                    return '{' + string.join(',') + '}';  
-                }  
-            case 'number':  
-                return obj;  
-            case false:  
-                return obj;  
-        }  
-}
-
-function animateContent(div_clickTarget){
-		$('#div_mainContent div:first-child').animate({opacity: 0, marginLeft: '-=200px'}, 1000, function(){
-			var if_target = $('<div />').load(div_clickTarget.attr('href')).css({opacity : 0}).addClass('div_content').appendTo($('#div_mainContent')).fadeTo("slow", 1);
-			$(this).remove();
-		});	
-}
-
-function initFB(){
-	FB.init({appId: '288454414516535', status: true, cookie: true, xfbml: true, user_photos: true});
-}
 
 var MD5 = function (string) {
  
@@ -269,4 +237,48 @@ String.prototype.LTrim = function(){
  
 String.prototype.RTrim = function(){
 	return this.replace(/(\s*$)/g, ""); 
+}
+
+jQuery.fn.flipContent = function(target){
+	$(this).animate({opacity: 0, marginLeft: '-=200px'}, 1000, function(){
+		$(this).addClass('hide');
+		$(target).css({opacity : 0}).removeClass('hide').fadeTo(2000, 1);
+	});
+}
+
+function postToErrorPage(error){
+	var s_persistence = JSON.stringify(error.persistence);
+	var s_logic = JSON.stringify(error.logic);
+	var s_presentation = JSON.stringify(error.presentation);
+	var s_validation = JSON.stringify(error.validation);
+	var s_exception = JSON.stringify(error.exception);
+	var s_displayMessage = JSON.stringify(error.displayMessage);
+	
+	var form = $('<form />').addClass('hide').attr({action: '/error/show', method : 'POST'}).appendTo($('body'));
+	$('<input />').addClass('hide').attr({name : 's_persistence'}).val(s_persistence).appendTo(form);
+	$('<input />').addClass('hide').attr({name : 's_logic'}).val(s_logic).appendTo(form);
+	$('<input />').addClass('hide').attr({name : 's_presentation'}).val(s_presentation).appendTo(form);
+	$('<input />').addClass('hide').attr({name : 's_validation'}).val(s_validation).appendTo(form);
+	$('<input />').addClass('hide').attr({name : 's_exception'}).val(s_exception).appendTo(form);
+	$('<input />').addClass('hide').attr({name : 's_displayMessage'}).val(s_displayMessage).appendTo(form);
+	form.submit();
+}
+
+function postErrorToDiv(data){
+	var div_error = $('#div_error').removeClass('hide').empty();;
+	var div = $('<div />').addClass('alert alert-error').appendTo(div_error);
+	var a_close = $('<a data-dismiss="alert"/>').attr({href : '#'}).addClass('close').html('x').appendTo(div);
+	$('<strong />').attr({id : 'strong_error'}).html(SERVER_ERROR_TITLE).appendTo(div);
+	$('<span />').attr({id : 'span_error'}).html(data.error.displayMessage).appendTo(div);
+	$('<a />').addClass('pull-right').click(function(e){
+		postToErrorPage(data.error);
+	}).attr({href : '#'}).html('Details').appendTo(div);
+}
+
+function postConnectionErrorToDiv(){
+	var div_error = $('#div_error').removeClass('hide').empty();;
+	var div = $('<div />').addClass('alert alert-error').appendTo(div_error);
+	var a_close = $('<a data-dismiss="alert"/>').attr({href : '#'}).addClass('close').html('x').appendTo(div);
+	$('<strong />').attr({id : 'strong_error'}).html(SERVER_ERROR_TITLE).appendTo(div);
+	$('<span />').attr({id : 'span_error'}).html(SERVER_ERROR).appendTo(div);
 }

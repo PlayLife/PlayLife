@@ -5,7 +5,7 @@
 <div class="navbar navbar-fixed-top">
   <div class="navbar-inner">
     <div class="container">
-    	<a class="brand" href='/'><img src='/img/icon.png' style='width: 20px; height: 20px;'/><span class="topic red small"> Art Kube</span></a>
+    	<a class="brand" href='/'><span class="topic red small">Play Life</span></a>
     	<ul class='nav pull-left'> 
     		<li><a class='userFunction' href='/create'><spring:message code="userFunction.create"/></a></li>
     	</ul><!-- /.nav .pull-left -->

@@ -2,6 +2,7 @@
 <classpath>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="src" path="WEB-INF/src"/>
+	<classpathentry kind="src" path="WEB-INF/resources"/>
 	<classpathentry kind="lib" path="WEB-INF/lib/antlr-2.7.6.jar"/>
 	<classpathentry kind="lib" path="WEB-INF/lib/aopalliance.jar"/>
 	<classpathentry kind="lib" path="WEB-INF/lib/cglib-nodep-2.2.jar"/>
