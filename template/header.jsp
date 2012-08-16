@@ -15,5 +15,5 @@
 <script src='/template/locale.js'></script>
 <script src='/js/bootstrap/bootstrap.min.js'></script>
 <script src='/js/font/cufon-yui.js'></script>
-<script src='/js/font/Helvetica_Neue_Condensed_Bold.font.js'></script>
+<script src='/js/font/Needlework_Good.font.js'></script>
 <script src='/js/main.js'></script>

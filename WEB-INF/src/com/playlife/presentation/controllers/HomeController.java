@@ -1,7 +1,13 @@
 package com.playlife.presentation.controllers;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.playlife.utility.LocaleService;
 
 @Controller
 @RequestMapping("/*")
@@ -13,28 +19,10 @@ public class HomeController {
 //	@Qualifier("handleAccess")
 //	IHandleAccess handleAccess;
 //	
-//	@SuppressWarnings("finally")
-//	@RequestMapping("/*")
-//	protected ModelAndView handleRequestInternal(HttpServletRequest request, HttpServletResponse response) throws Exception {
-//		HashMap<String, String> map = null;
-//		try {
-//			map = new HashMap<String, String>();
-//						
-//			Long uid = Request.getSessionLongAllowNull(request, UserSetting.USER_SESSIONNAME_UID);
-//						
-//			User user = null;
-//			if (uid != null)
-//				user = handleAccess.checkUser(uid);
-//			if (user == null){
-//				map.put("functionList", guestFunctionList);	
-//			} else {
-//				map.put("functionList", loginFunctionList);
-//			}
-//		} catch (Exception ex){
-//			response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
-//		} finally {
-//			ModelAndView mav = new ModelAndView("home", map);	
-//			return mav;
-//		}
-//	}
+	@RequestMapping(value="/*")
+	protected String registerRequest(HttpServletRequest request, HttpServletResponse response, ModelMap model) throws Exception {
+		LocaleService.resolve(request, response);
+
+		return "home";
+	}
 }

@@ -13,15 +13,21 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.playlife.logic.user.IPlayLifeUserService;
+import com.playlife.logic.user.PlayLifeUserService;
+import com.playlife.persistence.domainObject.PlayLifeUser;
 import com.playlife.presentation.converters.JSONConverter;
 import com.playlife.utility.LocaleService;
+import com.playlife.utility.exceptions.PresentationException;
+import com.playlife.utility.validators.UserValidator;
 
 @Controller
 @RequestMapping("/user")
 public class UserController {
 	@Autowired
-	IPlayLifeUserService playLifeUserService;
+	PlayLifeUserService playLifeUserService;
+	
+	@Autowired
+	UserValidator userValidator;
 	
 	@Autowired
 	MessageSource messageSource;
@@ -39,6 +45,23 @@ public class UserController {
 		LocaleService.resolve(request, response);
 
 		return "user/register";
+	}
+	
+	@RequestMapping(value="/create.json")
+	@ResponseBody
+	protected String create(PlayLifeUser registerUser, HttpServletRequest request) {
+		try {
+			userValidator.validate(registerUser);
+			
+			JSONObject obj_return = new JSONObject();
+			PlayLifeUser user = playLifeUserService.register(registerUser.getUsername(), registerUser.getPassword(), registerUser.getEmail());
+			obj_return.put("user", user);
+			obj_return.put("status", "ok");
+			request.getSession(true).setAttribute("user", user);
+			return obj_return.toString();
+		} catch (Exception ex){
+			throw new PresentationException(-9999, ex);
+		}
 	}
 	
 	@ExceptionHandler(Exception.class)

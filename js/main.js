@@ -1,8 +1,6 @@
 function cufon(){
-	Cufon.replace('.topic', { fontFamily: 'Helvetica Neue'} );
+	Cufon.replace('.topic', { fontFamily: 'Needlework Good'} );
 }
-
-cufon();
 
 var SERVER_ERROR_TITLE = 'Server Error : ';
 var SERVER_ERROR = 'Cannot Connect to Server. Please Refresh.';
@@ -21,6 +19,8 @@ function unblock(){
 }
 
 $(document).ready(function(){
+	cufon();
+	
 	var page_name = window.location.pathname.substring(1);
 	if (page_name != '')
 		$('li a[href$="/' + page_name + '"]').parent().addClass('active');

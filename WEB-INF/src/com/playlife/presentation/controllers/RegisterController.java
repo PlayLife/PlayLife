@@ -9,7 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.playlife.logic.user.IPlayLifeUserService;
+import com.playlife.logic.user.PlayLifeUserService;
 import com.playlife.settings.UISetting;
 import com.playlife.utility.captcha.ICaptcha;
 
@@ -18,7 +18,7 @@ import com.playlife.utility.captcha.ICaptcha;
 public class RegisterController {
 	@Autowired
 	@Qualifier("playLifeUserService")
-	IPlayLifeUserService playLifeUserService;
+	PlayLifeUserService playLifeUserService;
 
 	@Autowired
 	@Qualifier("captcha")

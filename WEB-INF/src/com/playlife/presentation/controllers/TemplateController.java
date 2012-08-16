@@ -12,7 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.playlife.logic.user.IPlayLifeUserService;
+import com.playlife.logic.user.PlayLifeUserService;
 import com.playlife.persistence.domainObject.PlayLifeUser;
 import com.playlife.persistence.domainObject.User_Role;
 import com.playlife.utility.LocaleService;
@@ -22,7 +22,7 @@ import com.playlife.utility.LocaleService;
 public class TemplateController {
 	@Autowired
 	@Qualifier("playLifeUserService")
-	IPlayLifeUserService playLifeUserService;
+	PlayLifeUserService playLifeUserService;
 	
 	private PlayLifeUser user;
 	@ModelAttribute
