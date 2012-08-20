@@ -38,6 +38,12 @@ public class LogicException extends RuntimeException  {
 		this.errorCode = errorCode;
 	}
 		
+	public String getMsg() {
+		return msg;
+	}
+	public void setMsg(String msg) {
+		this.msg = msg;
+	}
 	public String getErrorMessage(MessageSource messageSource, Locale locale){
 		try {
 			String errorName = "validation." + Math.abs(errorCode);

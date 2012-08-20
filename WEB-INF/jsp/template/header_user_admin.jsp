@@ -2,7 +2,7 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 
 
-<div class="navbar">
+<div class="navbar navbar-fixed-top">
   <div class="navbar-inner">
     <div class="container">
     	<a class="brand" href='/'><span class="topic red small">Play Life</span></a>
@@ -16,7 +16,7 @@
 				<ul class="dropdown-menu">
 					<li><a href='/user/accountSetting'><spring:message code="userFunction.accountSetting"/></a></li>
 					<li><a href='/language'><spring:message code="userFunction.language"/></a></li>
-					<li><a href='/logout' class='userFunction'><spring:message code="userFunction.logout"/></a></li>
+					<li><a href='/user/logout' class='userFunction'><spring:message code="userFunction.logout"/></a></li>
 				</ul>
 			</li>
     	</ul><!-- /.nav .pull-right -->

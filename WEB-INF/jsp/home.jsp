@@ -11,9 +11,9 @@
     
 </head>
 <body>
-	<jsp:include page="/template/userHeader" />
-		
 	<div class='container'>
+		<jsp:include page="/template/userHeader" />
+		
         <div class='well'>
         	home
         </div>

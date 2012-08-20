@@ -7,9 +7,11 @@ import org.springframework.context.MessageSource;
 public class ValidationException extends RuntimeException{
 	private static final long serialVersionUID = 1L;
 	public int errorCode = -1;
+	public String msg;
+	
 	public Exception exception = null;
 	public String[] s_para;
-	public String msg;
+	
 	
 	public ValidationException (int errorCode, Exception exception, String... s_para){
 		this.exception = exception;
@@ -48,7 +50,12 @@ public class ValidationException extends RuntimeException{
 	public void setErrorCode(int errorCode) {
 		this.errorCode = errorCode;
 	}
-	
+	public String getMsg() {
+		return msg;
+	}
+	public void setMsg(String msg) {
+		this.msg = msg;
+	}
 	public String getErrorMessage(MessageSource messageSource, Locale locale){
 		try {
 			String errorName = "validation." + Math.abs(errorCode);

@@ -89,11 +89,11 @@ public final class home_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("    \r\n");
       out.write("</head>\r\n");
       out.write("<body>\r\n");
-      out.write("\t");
+      out.write("\t<div class='container'>\r\n");
+      out.write("\t\t");
       org.apache.jasper.runtime.JspRuntimeLibrary.include(request, response, "/template/userHeader", out, false);
       out.write("\r\n");
       out.write("\t\t\r\n");
-      out.write("\t<div class='container'>\r\n");
       out.write("        <div class='well'>\r\n");
       out.write("        \thome\r\n");
       out.write("        </div>\r\n");

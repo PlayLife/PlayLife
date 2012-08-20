@@ -47,7 +47,12 @@ public class PresentationException extends RuntimeException{
 	public void setErrorCode(int errorCode) {
 		this.errorCode = errorCode;
 	}
-	
+	public String getMsg() {
+		return msg;
+	}
+	public void setMsg(String msg) {
+		this.msg = msg;
+	}
 	public String getErrorMessage(MessageSource messageSource, Locale locale){
 		try {
 			String errorName = "validation." + Math.abs(errorCode);

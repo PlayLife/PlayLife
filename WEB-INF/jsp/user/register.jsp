@@ -13,9 +13,9 @@
     <link rel="stylesheet" type="text/css" href="/css/user/register.css" />
 </head>
 <body>
+<jsp:include page="/template/userHeader" />
 	<div class='container'>
-		<jsp:include page="/template/userHeader" />
-		<form action='/user/create.json' method='POST' class='well form-horizontal' id='form_register'>
+		<form action='/user/create.json' method='POST' class='well form-horizontal' id='form_register' style='min-width: 600px'>
 			<a class='close pull-right' href='/'><spring:message code="register.cancel"/></a>
 			<legend><h1 class='topic red big'><spring:message code="register.title"/></h1></legend>
 			
@@ -26,7 +26,7 @@
 					<div class="controls"><input type="text" class="input-xlarge" id="tb_email" name='email' placeholder="<spring:message code="user.email"/>"/></div>
 				</div>
 			</fieldset>
-			
+						
 			<!-- Password -->
 			<fieldset>
 				<div class="control-group">
@@ -51,11 +51,18 @@
 				</div>
 			</fieldset>
 			
+			
 			<fieldset>
 				<div id='div_error' class='span6 hide'>
 				</div>
 				<button type="submit" class="btn btn-primary btn-large span3 offset8"><spring:message code="register.register"/></button>
 			</fieldset>
+			
+			<hr />
+			<!-- Facebook Login Dialog -->
+			<div class=''>
+				<a href='/user/facebook/login'><img src='/img/icon_facebook.png'/><span class='topic medium blue'> Login with Facebook</span></a>
+			</div>
 		</form>
 		
 		<div id='div_register_success' class='well hide pull-center'>

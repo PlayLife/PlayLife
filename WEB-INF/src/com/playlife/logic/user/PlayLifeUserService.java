@@ -12,6 +12,7 @@ import org.springframework.stereotype.Component;
 import com.playlife.logic.access.IAccessService;
 import com.playlife.persistence.DAO.PlayLifeUserDAO;
 import com.playlife.persistence.domainObject.PlayLifeUser;
+import com.playlife.persistence.domainObject.User_Type;
 import com.playlife.settings.UserSetting;
 import com.playlife.utility.exceptions.LogicException;
 
@@ -36,10 +37,10 @@ public class PlayLifeUserService {
 	 * 	Implementation		* 
 	 * 						*
 	 ************************/
-	public PlayLifeUser register(String email, String password, String username) throws LogicException {
+	public PlayLifeUser register(String email, String password, String username, User_Type type) throws LogicException {
 		try {
 			/* Step 3 : submit to DB */
-			PlayLifeUser user = new PlayLifeUser(email, password, username);
+			PlayLifeUser user = new PlayLifeUser(email, password, username, type);
 			playLifeUserDAO.save(user);
 			
 			return user;
@@ -82,9 +83,9 @@ public class PlayLifeUserService {
 		}
 	}
 
-	public PlayLifeUser getUserByEmailAllowNull(PlayLifeUser user) throws LogicException {
+	public PlayLifeUser getUserByEmailAllowNull(String email) throws LogicException {
 		try {
-			List<PlayLifeUser> userList = playLifeUserDAO.hql_find_ByEmail(user.getEmail());
+			List<PlayLifeUser> userList = playLifeUserDAO.hql_find_ByEmail(email);
 			if (userList.size() > 1)
 				throw new LogicException(-9999);
 			
@@ -100,7 +101,7 @@ public class PlayLifeUserService {
 	public boolean checkEmailExists(String email) throws LogicException {
 		try {
 			List<PlayLifeUser> userList = playLifeUserDAO.hql_find_ByEmail(email);
-			return (userList.size() > 1);
+			return (userList.size() >= 1);
 		} catch (Exception ex){
 			throw new LogicException(-9999, ex);
 		}
