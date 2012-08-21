@@ -23,6 +23,7 @@ import com.face4j.facebook.enums.Permission;
 import com.face4j.facebook.factory.FacebookFactory;
 import com.playlife.logic.user.PlayLifeUserService;
 import com.playlife.persistence.domainObject.PlayLifeUser;
+import com.playlife.persistence.domainObject.User_Role;
 import com.playlife.persistence.domainObject.User_Type;
 import com.playlife.presentation.converters.JSONConverter;
 import com.playlife.utility.LocaleService;
@@ -80,7 +81,7 @@ public class UserController {
 		
 		PlayLifeUser user = playLifeUserService.getUserByEmailAllowNull(fbUser.getEmail());
 		if (user == null)		
-			user = playLifeUserService.register(fbUser.getEmail(), "", fbUser.getUsername(), User_Type.FACEBOOK);
+			user = playLifeUserService.register(fbUser.getEmail(), "", fbUser.getUsername(), User_Type.FACEBOOK, User_Role.USER);
 		
 		request.getSession(true).setAttribute("user", user);
 		response.sendRedirect("/home");
@@ -108,7 +109,7 @@ public class UserController {
 		userValidator.validate(registerUser);
 		
 		JSONObject obj_return = new JSONObject();
-		PlayLifeUser user = playLifeUserService.register(registerUser.getEmail(), registerUser.getPassword(), registerUser.getUsername(), User_Type.NORMAL);
+		PlayLifeUser user = playLifeUserService.register(registerUser.getEmail(), registerUser.getPassword(), registerUser.getUsername(), User_Type.NORMAL, User_Role.USER);
 		obj_return.put("user", user);
 		obj_return.put("status", "ok");
 		request.getSession(true).setAttribute("user", user);

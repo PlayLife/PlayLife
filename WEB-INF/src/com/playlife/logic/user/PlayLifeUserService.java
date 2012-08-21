@@ -12,6 +12,7 @@ import org.springframework.stereotype.Component;
 import com.playlife.logic.access.IAccessService;
 import com.playlife.persistence.DAO.PlayLifeUserDAO;
 import com.playlife.persistence.domainObject.PlayLifeUser;
+import com.playlife.persistence.domainObject.User_Role;
 import com.playlife.persistence.domainObject.User_Type;
 import com.playlife.settings.UserSetting;
 import com.playlife.utility.exceptions.LogicException;
@@ -37,10 +38,10 @@ public class PlayLifeUserService {
 	 * 	Implementation		* 
 	 * 						*
 	 ************************/
-	public PlayLifeUser register(String email, String password, String username, User_Type type) throws LogicException {
+	public PlayLifeUser register(String email, String password, String username, User_Type type, User_Role role) throws LogicException {
 		try {
 			/* Step 3 : submit to DB */
-			PlayLifeUser user = new PlayLifeUser(email, password, username, type);
+			PlayLifeUser user = new PlayLifeUser(email, password, username, type, role);
 			playLifeUserDAO.save(user);
 			
 			return user;
@@ -106,4 +107,43 @@ public class PlayLifeUserService {
 			throw new LogicException(-9999, ex);
 		}
 	}
+
+	public int getUserCount() {
+		try {
+			return playLifeUserDAO.count();
+		} catch (Exception ex){
+			throw new LogicException(-9999, ex);
+		}
+	}
+	
+	public Long getAllCount(String search) {
+		try {
+			search = "%" + search + "%";
+			return playLifeUserDAO.hql_count_All(search);
+		} catch (Exception ex){
+			throw new LogicException(-9999, ex);
+		}
+	}
+	
+	public List<PlayLifeUser> getAll(String search, int start, int end, String orderByField, String orderByType){
+		try {
+			PlayLifeUser.class.getDeclaredField(orderByField);
+			if (!orderByType.equalsIgnoreCase("ASC") && !orderByType.equalsIgnoreCase("DESC"))
+				throw new LogicException(-9999);
+			
+			search = "%" + search + "%";
+			return playLifeUserDAO.hql_find_All(start, end, orderByField, orderByType, search);		} catch (Exception ex){
+			throw new LogicException(-9999, ex);
+		}
+	}
+
+	public void setDisable(Long userId, boolean isDisabled) {
+		try {
+			PlayLifeUser user = accessService.checkUser(userId);
+			user.setDisabled(isDisabled);
+		} catch (Exception ex){
+			throw new LogicException(-9999, ex);
+		}
+	}
+	
 }

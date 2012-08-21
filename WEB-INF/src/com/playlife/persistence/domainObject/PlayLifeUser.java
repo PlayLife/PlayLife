@@ -26,9 +26,13 @@ import org.hibernate.annotations.Type;
 @NamedQueries({
     @NamedQuery(name="PlayLifeUser.hql_find_ByEmail",
                 query="from PlayLifeUser u where u.email = :email"),
-    @NamedQuery(name="User.hql_find_ByEmailAndPassword",
+    @NamedQuery(name="PlayLifeUser.hql_find_ByEmailAndPassword",
                 query="from PlayLifeUser u where u.email = :email AND u.password = :password"),
-}) 
+    @NamedQuery(name="PlayLifeUser.hql_find_All",
+            query="from PlayLifeUser u where u.email like :search_text OR u.username like :search_text"),
+    @NamedQuery(name="PlayLifeUser.hql_count_All",
+            query="select count(u) from PlayLifeUser u where u.email like :search_text OR u.username like :search_text")              
+})
 public class PlayLifeUser implements Serializable{
 	/****************
 	 * 				*
@@ -61,6 +65,9 @@ public class PlayLifeUser implements Serializable{
 	
 	public PlayLifeUser(String email, String password, String username, Locale language, User_Type type) {
 		this(email, password, username, language, User_Role.USER, type);
+	}
+	public PlayLifeUser(String email, String password, String username, User_Type type, User_Role role){
+		this(email, password, username, Locale.getDefault(), role, type);
 	}
 	public PlayLifeUser(String email, String password, String username, User_Type type){
 		this(email, password, username, Locale.getDefault(), type);
