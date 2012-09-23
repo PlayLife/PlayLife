@@ -1,10 +1,12 @@
 package com.playlife.presentation.controllers;
 
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
-import net.sf.json.JSONObject;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
@@ -21,6 +23,9 @@ import com.face4j.facebook.entity.User;
 import com.face4j.facebook.enums.Display;
 import com.face4j.facebook.enums.Permission;
 import com.face4j.facebook.factory.FacebookFactory;
+import com.fasterxml.jackson.core.JsonGenerationException;
+import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.playlife.logic.user.PlayLifeUserService;
 import com.playlife.persistence.domainObject.PlayLifeUser;
 import com.playlife.persistence.domainObject.User_Role;
@@ -33,6 +38,8 @@ import com.playlife.utility.validators.UserValidator;
 @Controller
 @RequestMapping("/user")
 public class UserController {
+	ObjectMapper mapper = JSONConverter.mapper;
+	
 	@Autowired
 	PlayLifeUserService playLifeUserService;
 	
@@ -57,6 +64,35 @@ public class UserController {
 		LocaleService.resolve(request, response);
 
 		return "user/login";
+	}
+	
+	@RequestMapping(value="/forgot")
+	protected String forgotRequest(HttpServletRequest request, HttpServletResponse response, ModelMap model) throws Exception {
+		LocaleService.resolve(request, response);
+
+		return "user/forgot";
+	}
+	
+	@RequestMapping(value="/sendForgotCode.json")
+	@ResponseBody
+	protected String sendForgotCodeRequest(String email, HttpServletRequest request, HttpServletResponse response, ModelMap model) throws Exception {
+		LocaleService.resolve(request, response);
+		playLifeUserService.sendForgotPasswordEmail(email);
+		
+		Map<String, Object> map_return = new HashMap<String, Object>();
+		map_return.put("status", "ok");
+		return mapper.writeValueAsString(map_return);
+	}
+	
+	@RequestMapping(value="/changePassword.json")
+	@ResponseBody
+	protected String changePasswordRequest(String email, String forgotCode, String password, HttpServletRequest request, HttpServletResponse response, ModelMap model) throws Exception {
+		LocaleService.resolve(request, response);
+		playLifeUserService.changePassword(email, forgotCode, password);
+		
+		Map<String, Object> map_return = new HashMap<String, Object>();
+		map_return.put("status", "ok");
+		return mapper.writeValueAsString(map_return);
 	}
 	
 	@RequestMapping(value="/facebook/login")
@@ -108,34 +144,34 @@ public class UserController {
 		
 		userValidator.validate(registerUser);
 		
-		JSONObject obj_return = new JSONObject();
+		Map<String, Object> map_return = new HashMap<String, Object>();
 		PlayLifeUser user = playLifeUserService.register(registerUser.getEmail(), registerUser.getPassword(), registerUser.getUsername(), User_Type.NORMAL, User_Role.USER);
-		obj_return.put("user", user);
-		obj_return.put("status", "ok");
+		map_return.put("user", user);
+		map_return.put("status", "ok");
 		request.getSession(true).setAttribute("user", user);
-		return obj_return.toString();
+		return mapper.writeValueAsString(map_return);
 	}
 	
 	@RequestMapping(value="/login.json")
 	@ResponseBody
-	protected String login(PlayLifeUser loginUser, HttpServletRequest request) {
+	protected String login(PlayLifeUser loginUser, HttpServletRequest request) throws JsonGenerationException, JsonMappingException, IOException {
 		PlayLifeUser user = playLifeUserService.getUserByEmailAllowNull(loginUser.getEmail());
 		if (user == null || user.type != User_Type.NORMAL)
 			throw new PresentationException(-9999);
 		
-		JSONObject obj_return = new JSONObject();
-		obj_return.put("user", user);
-		obj_return.put("status", "ok");
+		Map<String, Object> map_return = new HashMap<String, Object>();
+		map_return.put("user", user);
+		map_return.put("status", "ok");
 		request.getSession(true).setAttribute("user", user);
-		return obj_return.toString();
+		return mapper.writeValueAsString(map_return);
 	}
 	
 	@ExceptionHandler(Exception.class)
 	@ResponseBody
-	public String handlerException(HttpServletRequest request, Exception ex){		
-		JSONObject obj_return = new JSONObject();
-		obj_return.put("error", JSONConverter.constructError(ex, messageSource, LocaleService.getLocale(request)));
-		obj_return.put("status", "error");
-		return obj_return.toString();
+	public String handlerException(HttpServletRequest request, Exception ex) throws JsonGenerationException, JsonMappingException, IOException{		
+		Map<String, Object> map_return = new HashMap<String, Object>();
+		map_return.put("error", JSONConverter.constructError(ex, messageSource, LocaleService.getLocale(request)));
+		map_return.put("status", "error");
+		return mapper.writeValueAsString(map_return);
 	}
 }

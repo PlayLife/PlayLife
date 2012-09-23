@@ -180,7 +180,12 @@ public class PlayLifeUser implements Serializable{
 	public void setFacebookCreated(boolean isFacebookCreated) {
 		this.isFacebookCreated = isFacebookCreated;
 	}
-
+	public String getForgotCode() {
+		return forgotCode;
+	}
+	public void setForgotCode(String forgotCode) {
+		this.forgotCode = forgotCode;
+	}
 
 	/****************
 	 * 				*
@@ -232,4 +237,7 @@ public class PlayLifeUser implements Serializable{
 	@Column(name="role") 
 	@Enumerated(EnumType.STRING) 
 	private User_Role role;
+	
+	@Column(name="forgotCode")
+	private String forgotCode;
 }

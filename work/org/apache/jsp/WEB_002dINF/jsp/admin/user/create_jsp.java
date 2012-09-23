@@ -117,7 +117,7 @@ public final class create_jsp extends org.apache.jasper.runtime.HttpJspBase
       if (_jspx_meth_spring_005fmessage_005f1(_jspx_page_context))
         return;
       out.write(" : </label>\r\n");
-      out.write("\t\t\t\t\t\t\t\t<div class=\"controls\"><select name='s_userRole'><option value='ADMIN'>");
+      out.write("\t\t\t\t\t\t\t\t<div class=\"controls\"><select name='userRole'><option value='ADMIN'>");
       if (_jspx_meth_spring_005fmessage_005f2(_jspx_page_context))
         return;
       out.write("</option><option value='USER'>");
@@ -273,7 +273,7 @@ public final class create_jsp extends org.apache.jasper.runtime.HttpJspBase
     org.springframework.web.servlet.tags.MessageTag _jspx_th_spring_005fmessage_005f2 = (org.springframework.web.servlet.tags.MessageTag) _005fjspx_005ftagPool_005fspring_005fmessage_0026_005fcode_005fnobody.get(org.springframework.web.servlet.tags.MessageTag.class);
     _jspx_th_spring_005fmessage_005f2.setPageContext(_jspx_page_context);
     _jspx_th_spring_005fmessage_005f2.setParent(null);
-    // /WEB-INF/jsp/admin/user/create.jsp(28,78) name = code type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /WEB-INF/jsp/admin/user/create.jsp(28,76) name = code type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_spring_005fmessage_005f2.setCode("admin.user.create.role.admin");
     int[] _jspx_push_body_count_spring_005fmessage_005f2 = new int[] { 0 };
     try {
@@ -300,7 +300,7 @@ public final class create_jsp extends org.apache.jasper.runtime.HttpJspBase
     org.springframework.web.servlet.tags.MessageTag _jspx_th_spring_005fmessage_005f3 = (org.springframework.web.servlet.tags.MessageTag) _005fjspx_005ftagPool_005fspring_005fmessage_0026_005fcode_005fnobody.get(org.springframework.web.servlet.tags.MessageTag.class);
     _jspx_th_spring_005fmessage_005f3.setPageContext(_jspx_page_context);
     _jspx_th_spring_005fmessage_005f3.setParent(null);
-    // /WEB-INF/jsp/admin/user/create.jsp(28,161) name = code type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /WEB-INF/jsp/admin/user/create.jsp(28,159) name = code type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_spring_005fmessage_005f3.setCode("admin.user.create.role.user");
     int[] _jspx_push_body_count_spring_005fmessage_005f3 = new int[] { 0 };
     try {

@@ -1,12 +1,12 @@
 package com.playlife.presentation.controllers;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import net.sf.json.JSONObject;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
@@ -18,6 +18,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.fasterxml.jackson.core.JsonGenerationException;
+import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.playlife.logic.user.PlayLifeUserService;
 import com.playlife.persistence.domainObject.PlayLifeUser;
 import com.playlife.persistence.domainObject.User_Role;
@@ -38,6 +41,8 @@ public class AdminController {
 	
 	@Autowired
 	UserValidator userValidator;
+	
+	ObjectMapper mapper = JSONConverter.mapper;
 	
 	@RequestMapping(value="/")
 	protected String registerRequest(HttpServletRequest request, HttpServletResponse response, ModelMap model) throws IOException {
@@ -80,66 +85,58 @@ public class AdminController {
 		if (orderBy == null)
 			orderBy = "";
 		
-		JSONObject obj_return = new JSONObject();
+		Map<String, Object> map_return = new HashMap<String, Object>();
 		List<PlayLifeUser> users = playLifeUserService.getAll(search, start, end, "userId", "ASC");
 		
-		obj_return.put("users", users);
-		obj_return.put("count", playLifeUserService.getAllCount(search));
-		obj_return.put("status", "ok");
+		map_return.put("users", users);
+		map_return.put("count", playLifeUserService.getAllCount(search));
+		map_return.put("status", "ok");
 		
-		return obj_return.toString();
+		return mapper.writeValueAsString(map_return);
 	}
 	
 	@RequestMapping(value="/user/create.json")
 	@ResponseBody
-	protected String user_listRequest(PlayLifeUser user, String user_role, String user_type, HttpServletRequest request, HttpServletResponse response) throws IOException {
+	protected String user_listRequest(PlayLifeUser user, String userRole, HttpServletRequest request, HttpServletResponse response) throws IOException {
 		LocaleService.resolve(request, response);
 		redirect(request, "", true);
 		userValidator.validate(user);
 		
-		JSONObject obj_return = new JSONObject();
-		playLifeUserService.register(user.getUsername(), user.getPassword(), user.getEmail(), User_Type.fromString(user_type), User_Role.fromString(user_role));
-		obj_return.put("status", "ok");
+		Map<String, Object> map_return = new HashMap<String, Object>();
+		playLifeUserService.register(user.getUsername(), user.getPassword(), user.getEmail(), User_Type.NORMAL, User_Role.fromString(userRole));
+		map_return.put("status", "ok");
 		
-		return obj_return.toString();
+		return mapper.writeValueAsString(map_return);
 	}
 	
 	@RequestMapping(value="/user/bam.json")
 	@ResponseBody
-	protected String bam(PlayLifeUser bamUser, HttpServletRequest request) {
-		try {
-			redirect(request, null, true);
-			
-			PlayLifeUser user = (PlayLifeUser)request.getSession().getAttribute("user");
-			if (user.getUserId() == bamUser.getUserId())
-				throw new PresentationException(-9999);
-			
-			JSONObject obj_return = new JSONObject();
-			playLifeUserService.setDisable(bamUser.getUserId(), true);
-			obj_return.put("status", "ok");
-			return obj_return.toString();
-		} catch (Exception ex){
-			throw new PresentationException(-9999, ex);
-		}
+	protected String bam(PlayLifeUser bamUser, HttpServletRequest request) throws JsonGenerationException, JsonMappingException, IOException {
+		redirect(request, null, true);
+		
+		PlayLifeUser user = (PlayLifeUser)request.getSession().getAttribute("user");
+		if (user.getUserId().equals(bamUser.getUserId()))
+			throw new PresentationException(-9999);
+		
+		Map<String, Object> map_return = new HashMap<String, Object>();
+		playLifeUserService.setDisable(bamUser.getUserId(), true);
+		map_return.put("status", "ok");
+		return mapper.writeValueAsString(map_return);
 	}
 	
 	@RequestMapping(value="/user/unbam.json")
 	@ResponseBody
-	protected String unbam(PlayLifeUser bamUser, HttpServletRequest request) {
-		try {
-			redirect(request, null, true);
-			
-			PlayLifeUser user = (PlayLifeUser)request.getSession().getAttribute("user");
-			if (user.getUserId() == bamUser.getUserId())
-				throw new PresentationException(-9999);
-			
-			JSONObject obj_return = new JSONObject();
-			playLifeUserService.setDisable(bamUser.getUserId(), false);
-			obj_return.put("status", "ok");
-			return obj_return.toString();
-		} catch (Exception ex){
-			throw new PresentationException(-9999, ex);
-		}
+	protected String unbam(PlayLifeUser bamUser, HttpServletRequest request) throws JsonGenerationException, JsonMappingException, IOException {
+		redirect(request, null, true);
+		
+		PlayLifeUser user = (PlayLifeUser)request.getSession().getAttribute("user");
+		if (user.getUserId().equals(bamUser.getUserId()))
+			throw new PresentationException(-9999);
+		
+		Map<String, Object> map_return = new HashMap<String, Object>();
+		playLifeUserService.setDisable(bamUser.getUserId(), false);
+		map_return.put("status", "ok");
+		return mapper.writeValueAsString(map_return);
 	}
 	
 	private String redirect(HttpServletRequest request, String path, boolean throwException){
@@ -154,10 +151,10 @@ public class AdminController {
 	
 	@ExceptionHandler(Exception.class)
 	@ResponseBody
-	public String handlerException(HttpServletRequest request, Exception ex){
-		JSONObject obj_return = new JSONObject();
-		obj_return.put("error", JSONConverter.constructError(ex, messageSource, LocaleService.getLocale(request)));
-		obj_return.put("status", "error");
-		return obj_return.toString();
+	public String handlerException(HttpServletRequest request, Exception ex) throws JsonGenerationException, JsonMappingException, IOException{
+		Map<String, Object> map_return = new HashMap<String, Object>();
+		map_return.put("error", JSONConverter.constructError(ex, messageSource, LocaleService.getLocale(request)));
+		map_return.put("status", "error");
+		return mapper.writeValueAsString(map_return);
 	}
 }

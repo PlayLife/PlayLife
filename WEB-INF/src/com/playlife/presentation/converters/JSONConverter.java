@@ -8,12 +8,16 @@ import net.sf.json.JSONObject;
 
 import org.springframework.context.MessageSource;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.datatype.hibernate3.Hibernate3Module;
 import com.playlife.utility.exceptions.LogicException;
 import com.playlife.utility.exceptions.PersistenceException;
 import com.playlife.utility.exceptions.PresentationException;
 import com.playlife.utility.exceptions.ValidationException;
 
 public class JSONConverter {
+	public static ObjectMapper mapper = new ObjectMapper().registerModule(new Hibernate3Module());
+	
 	public static JSONObject constructError(Exception exception, MessageSource messageSource, Locale locale){
 		JSONObject obj_return = new JSONObject();
 		String s_displayMessage = "";

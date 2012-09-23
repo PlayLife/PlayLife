@@ -1,12 +1,12 @@
 package com.playlife.presentation.controllers;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.logging.Logger;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import net.sf.json.JSONObject;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
@@ -16,6 +16,9 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.fasterxml.jackson.core.JsonGenerationException;
+import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.playlife.presentation.converters.JSONConverter;
 import com.playlife.utility.LocaleService;
 import com.playlife.utility.Request;
@@ -29,6 +32,8 @@ import com.playlife.utility.exceptions.ValidationException;
 public class ErrorController {
 	@Autowired
 	MessageSource messageSource;
+	
+	ObjectMapper mapper = JSONConverter.mapper;
 	
 	private static final Logger log = Logger.getLogger("Error"); 
 	
@@ -58,17 +63,17 @@ public class ErrorController {
 		LocaleService.resolve(request, response);
 		
 		log.info(s_log);
-		JSONObject obj_return = new JSONObject();
-		obj_return.put("status", "ok");
-		return obj_return.toString();
+		Map<String, Object> map_return = new HashMap<String, Object>();
+		map_return.put("status", "ok");
+		return mapper.writeValueAsString(map_return);
 	}
 	
 	@ExceptionHandler(Exception.class)
 	@ResponseBody
-	public String handlerException(HttpServletRequest request, Exception ex){
-		JSONObject obj_return = new JSONObject();
-		obj_return.put("error", JSONConverter.constructError(ex, messageSource, LocaleService.getLocale(request)));
-		obj_return.put("status", "error");
-		return obj_return.toString();
+	public String handlerException(HttpServletRequest request, Exception ex) throws JsonGenerationException, JsonMappingException, IOException{
+		Map<String, Object> map_return = new HashMap<String, Object>();
+		map_return.put("error", JSONConverter.constructError(ex, messageSource, LocaleService.getLocale(request)));
+		map_return.put("status", "error");
+		return mapper.writeValueAsString(map_return);
 	}
 }

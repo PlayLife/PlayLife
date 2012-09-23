@@ -4,7 +4,7 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.jsp.*;
 
-public final class login_jsp extends org.apache.jasper.runtime.HttpJspBase
+public final class forgot_jsp extends org.apache.jasper.runtime.HttpJspBase
     implements org.apache.jasper.runtime.JspSourceDependent {
 
   private static final JspFactory _jspxFactory = JspFactory.getDefaultFactory();
@@ -66,7 +66,7 @@ public final class login_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("<!DOCTYPE html PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\" \"http://www.w3.org/TR/html4/loose.dtd\">\r\n");
       out.write("<html>\r\n");
       out.write("<head>\r\n");
-      out.write("\t<title>Login</title>\r\n");
+      out.write("\t<title>Forgot Password</title>\r\n");
       out.write("\t");
       out.write("<link rel=\"stylesheet\" type=\"text/css\" href=\"/css/jquery/jquery-ui-1.8.16.custom.css\" />\r\n");
       out.write("<link rel=\"stylesheet\" type=\"text/css\" href=\"/css/jquery/jquery.jgrowl.css\" />\r\n");
@@ -88,15 +88,15 @@ public final class login_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("<script src='/js/font/Needlework_Good.font.js'></script>\r\n");
       out.write("<script src='/js/main.js'></script>");
       out.write(" \r\n");
-      out.write("    <script type='text/javascript' src='/js/user/login.js'></script>\r\n");
-      out.write("    <link rel=\"stylesheet\" type=\"text/css\" href=\"/css/user/login.css\" />\r\n");
+      out.write("    <script type='text/javascript' src='/js/user/forgot.js'></script>\r\n");
+      out.write("    <link rel=\"stylesheet\" type=\"text/css\" href=\"/css/user/forgot.css\" />\r\n");
       out.write("</head>\r\n");
       out.write("<body>\r\n");
       out.write("\t<div class='container'>\r\n");
       out.write("    \t");
       org.apache.jasper.runtime.JspRuntimeLibrary.include(request, response, "/template/userHeader", out, false);
       out.write("\r\n");
-      out.write("    \t<form action='/user/login.json' method='POST' class='well form-horizontal' id='form_login'>\r\n");
+      out.write("    \t<form action='/user/forgot.json' method='POST' class='well form-horizontal' id='form_login'>\r\n");
       out.write("\t\t\t<a class='close pull-right' href='/'>");
       if (_jspx_meth_spring_005fmessage_005f0(_jspx_page_context))
         return;
@@ -119,46 +119,23 @@ public final class login_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\t\t\t\t</div>\r\n");
       out.write("\t\t\t</fieldset>\r\n");
       out.write("\t\t\t\r\n");
-      out.write("\t\t\t<!-- Password -->\r\n");
-      out.write("\t\t\t<fieldset>\r\n");
-      out.write("\t\t\t\t<div class=\"control-group\">\r\n");
-      out.write("\t\t\t\t\t<label class=\"control-label\" for=\"tb_password\">");
-      if (_jspx_meth_spring_005fmessage_005f4(_jspx_page_context))
-        return;
-      out.write(" : </label>\r\n");
-      out.write("\t\t\t\t\t<div class=\"controls\"><input type=\"password\" class=\"input-xlarge\" id=\"tb_password\" name='password' placeholder=\"");
-      if (_jspx_meth_spring_005fmessage_005f5(_jspx_page_context))
-        return;
-      out.write("\"/> <a href='user/forgot'>");
-      if (_jspx_meth_spring_005fmessage_005f6(_jspx_page_context))
-        return;
-      out.write("</a></div>\r\n");
-      out.write("\t\t\t\t</div>\r\n");
-      out.write("\t\t\t</fieldset>\r\n");
-      out.write("\t\t\t\r\n");
       out.write("\t\t\t<fieldset>\r\n");
       out.write("\t\t\t\t<div id='div_error' class='span6 hide'>\r\n");
       out.write("\t\t\t\t</div>\r\n");
       out.write("\t\t\t\t<button type=\"submit\" class=\"btn btn-primary btn-large span3 offset8\">");
-      if (_jspx_meth_spring_005fmessage_005f7(_jspx_page_context))
+      if (_jspx_meth_spring_005fmessage_005f4(_jspx_page_context))
         return;
       out.write("</button>\r\n");
       out.write("\t\t\t</fieldset>\r\n");
-      out.write("\t\t\t\r\n");
-      out.write("\t\t\t<hr />\r\n");
-      out.write("\t\t\t<!-- Facebook Login Dialog -->\r\n");
-      out.write("\t\t\t<div class=''>\r\n");
-      out.write("\t\t\t\t<a href='/user/facebook/login'><img src='/img/icon_facebook.png'/><span class='topic medium blue'> Login with Facebook</span></a>\r\n");
-      out.write("\t\t\t</div>\r\n");
       out.write("\t\t</form>\r\n");
       out.write("\t\t\r\n");
-      out.write("\t\t<div id='div_login_success' class='well hide pull-center'>\r\n");
+      out.write("\t\t<div id='div_forgot_success' class='well hide pull-center'>\r\n");
       out.write("\t\t\t<h1 class='topic red big'>");
-      if (_jspx_meth_spring_005fmessage_005f8(_jspx_page_context))
+      if (_jspx_meth_spring_005fmessage_005f5(_jspx_page_context))
         return;
       out.write("</h1>\r\n");
       out.write("\t\t\t<span>");
-      if (_jspx_meth_spring_005fmessage_005f9(_jspx_page_context))
+      if (_jspx_meth_spring_005fmessage_005f6(_jspx_page_context))
         return;
       out.write("</span>\r\n");
       out.write("\t\t</div>\r\n");
@@ -188,8 +165,8 @@ public final class login_jsp extends org.apache.jasper.runtime.HttpJspBase
     org.springframework.web.servlet.tags.MessageTag _jspx_th_spring_005fmessage_005f0 = (org.springframework.web.servlet.tags.MessageTag) _005fjspx_005ftagPool_005fspring_005fmessage_0026_005fcode_005fnobody.get(org.springframework.web.servlet.tags.MessageTag.class);
     _jspx_th_spring_005fmessage_005f0.setPageContext(_jspx_page_context);
     _jspx_th_spring_005fmessage_005f0.setParent(null);
-    // /WEB-INF/jsp/user/login.jsp(16,40) name = code type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_spring_005fmessage_005f0.setCode("login.cancel");
+    // /WEB-INF/jsp/user/forgot.jsp(16,40) name = code type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_spring_005fmessage_005f0.setCode("forgot.cancel");
     int[] _jspx_push_body_count_spring_005fmessage_005f0 = new int[] { 0 };
     try {
       int _jspx_eval_spring_005fmessage_005f0 = _jspx_th_spring_005fmessage_005f0.doStartTag();
@@ -215,8 +192,8 @@ public final class login_jsp extends org.apache.jasper.runtime.HttpJspBase
     org.springframework.web.servlet.tags.MessageTag _jspx_th_spring_005fmessage_005f1 = (org.springframework.web.servlet.tags.MessageTag) _005fjspx_005ftagPool_005fspring_005fmessage_0026_005fcode_005fnobody.get(org.springframework.web.servlet.tags.MessageTag.class);
     _jspx_th_spring_005fmessage_005f1.setPageContext(_jspx_page_context);
     _jspx_th_spring_005fmessage_005f1.setParent(null);
-    // /WEB-INF/jsp/user/login.jsp(17,37) name = code type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_spring_005fmessage_005f1.setCode("login.title");
+    // /WEB-INF/jsp/user/forgot.jsp(17,37) name = code type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_spring_005fmessage_005f1.setCode("forgot.title");
     int[] _jspx_push_body_count_spring_005fmessage_005f1 = new int[] { 0 };
     try {
       int _jspx_eval_spring_005fmessage_005f1 = _jspx_th_spring_005fmessage_005f1.doStartTag();
@@ -242,7 +219,7 @@ public final class login_jsp extends org.apache.jasper.runtime.HttpJspBase
     org.springframework.web.servlet.tags.MessageTag _jspx_th_spring_005fmessage_005f2 = (org.springframework.web.servlet.tags.MessageTag) _005fjspx_005ftagPool_005fspring_005fmessage_0026_005fcode_005fnobody.get(org.springframework.web.servlet.tags.MessageTag.class);
     _jspx_th_spring_005fmessage_005f2.setPageContext(_jspx_page_context);
     _jspx_th_spring_005fmessage_005f2.setParent(null);
-    // /WEB-INF/jsp/user/login.jsp(21,49) name = code type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /WEB-INF/jsp/user/forgot.jsp(21,49) name = code type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_spring_005fmessage_005f2.setCode("user.email");
     int[] _jspx_push_body_count_spring_005fmessage_005f2 = new int[] { 0 };
     try {
@@ -269,7 +246,7 @@ public final class login_jsp extends org.apache.jasper.runtime.HttpJspBase
     org.springframework.web.servlet.tags.MessageTag _jspx_th_spring_005fmessage_005f3 = (org.springframework.web.servlet.tags.MessageTag) _005fjspx_005ftagPool_005fspring_005fmessage_0026_005fcode_005fnobody.get(org.springframework.web.servlet.tags.MessageTag.class);
     _jspx_th_spring_005fmessage_005f3.setPageContext(_jspx_page_context);
     _jspx_th_spring_005fmessage_005f3.setParent(null);
-    // /WEB-INF/jsp/user/login.jsp(22,107) name = code type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /WEB-INF/jsp/user/forgot.jsp(22,107) name = code type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_spring_005fmessage_005f3.setCode("user.email");
     int[] _jspx_push_body_count_spring_005fmessage_005f3 = new int[] { 0 };
     try {
@@ -296,8 +273,8 @@ public final class login_jsp extends org.apache.jasper.runtime.HttpJspBase
     org.springframework.web.servlet.tags.MessageTag _jspx_th_spring_005fmessage_005f4 = (org.springframework.web.servlet.tags.MessageTag) _005fjspx_005ftagPool_005fspring_005fmessage_0026_005fcode_005fnobody.get(org.springframework.web.servlet.tags.MessageTag.class);
     _jspx_th_spring_005fmessage_005f4.setPageContext(_jspx_page_context);
     _jspx_th_spring_005fmessage_005f4.setParent(null);
-    // /WEB-INF/jsp/user/login.jsp(29,52) name = code type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_spring_005fmessage_005f4.setCode("user.password");
+    // /WEB-INF/jsp/user/forgot.jsp(29,74) name = code type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_spring_005fmessage_005f4.setCode("forgot.forgot");
     int[] _jspx_push_body_count_spring_005fmessage_005f4 = new int[] { 0 };
     try {
       int _jspx_eval_spring_005fmessage_005f4 = _jspx_th_spring_005fmessage_005f4.doStartTag();
@@ -323,8 +300,8 @@ public final class login_jsp extends org.apache.jasper.runtime.HttpJspBase
     org.springframework.web.servlet.tags.MessageTag _jspx_th_spring_005fmessage_005f5 = (org.springframework.web.servlet.tags.MessageTag) _005fjspx_005ftagPool_005fspring_005fmessage_0026_005fcode_005fnobody.get(org.springframework.web.servlet.tags.MessageTag.class);
     _jspx_th_spring_005fmessage_005f5.setPageContext(_jspx_page_context);
     _jspx_th_spring_005fmessage_005f5.setParent(null);
-    // /WEB-INF/jsp/user/login.jsp(30,117) name = code type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_spring_005fmessage_005f5.setCode("user.password");
+    // /WEB-INF/jsp/user/forgot.jsp(34,29) name = code type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_spring_005fmessage_005f5.setCode("forgot.success");
     int[] _jspx_push_body_count_spring_005fmessage_005f5 = new int[] { 0 };
     try {
       int _jspx_eval_spring_005fmessage_005f5 = _jspx_th_spring_005fmessage_005f5.doStartTag();
@@ -350,8 +327,8 @@ public final class login_jsp extends org.apache.jasper.runtime.HttpJspBase
     org.springframework.web.servlet.tags.MessageTag _jspx_th_spring_005fmessage_005f6 = (org.springframework.web.servlet.tags.MessageTag) _005fjspx_005ftagPool_005fspring_005fmessage_0026_005fcode_005fnobody.get(org.springframework.web.servlet.tags.MessageTag.class);
     _jspx_th_spring_005fmessage_005f6.setPageContext(_jspx_page_context);
     _jspx_th_spring_005fmessage_005f6.setParent(null);
-    // /WEB-INF/jsp/user/login.jsp(30,181) name = code type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_spring_005fmessage_005f6.setCode("login.forgotpassword");
+    // /WEB-INF/jsp/user/forgot.jsp(35,9) name = code type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_spring_005fmessage_005f6.setCode("forgot.redirect");
     int[] _jspx_push_body_count_spring_005fmessage_005f6 = new int[] { 0 };
     try {
       int _jspx_eval_spring_005fmessage_005f6 = _jspx_th_spring_005fmessage_005f6.doStartTag();
@@ -365,87 +342,6 @@ public final class login_jsp extends org.apache.jasper.runtime.HttpJspBase
     } finally {
       _jspx_th_spring_005fmessage_005f6.doFinally();
       _005fjspx_005ftagPool_005fspring_005fmessage_0026_005fcode_005fnobody.reuse(_jspx_th_spring_005fmessage_005f6);
-    }
-    return false;
-  }
-
-  private boolean _jspx_meth_spring_005fmessage_005f7(PageContext _jspx_page_context)
-          throws Throwable {
-    PageContext pageContext = _jspx_page_context;
-    JspWriter out = _jspx_page_context.getOut();
-    //  spring:message
-    org.springframework.web.servlet.tags.MessageTag _jspx_th_spring_005fmessage_005f7 = (org.springframework.web.servlet.tags.MessageTag) _005fjspx_005ftagPool_005fspring_005fmessage_0026_005fcode_005fnobody.get(org.springframework.web.servlet.tags.MessageTag.class);
-    _jspx_th_spring_005fmessage_005f7.setPageContext(_jspx_page_context);
-    _jspx_th_spring_005fmessage_005f7.setParent(null);
-    // /WEB-INF/jsp/user/login.jsp(37,74) name = code type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_spring_005fmessage_005f7.setCode("login.login");
-    int[] _jspx_push_body_count_spring_005fmessage_005f7 = new int[] { 0 };
-    try {
-      int _jspx_eval_spring_005fmessage_005f7 = _jspx_th_spring_005fmessage_005f7.doStartTag();
-      if (_jspx_th_spring_005fmessage_005f7.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
-        return true;
-      }
-    } catch (Throwable _jspx_exception) {
-      while (_jspx_push_body_count_spring_005fmessage_005f7[0]-- > 0)
-        out = _jspx_page_context.popBody();
-      _jspx_th_spring_005fmessage_005f7.doCatch(_jspx_exception);
-    } finally {
-      _jspx_th_spring_005fmessage_005f7.doFinally();
-      _005fjspx_005ftagPool_005fspring_005fmessage_0026_005fcode_005fnobody.reuse(_jspx_th_spring_005fmessage_005f7);
-    }
-    return false;
-  }
-
-  private boolean _jspx_meth_spring_005fmessage_005f8(PageContext _jspx_page_context)
-          throws Throwable {
-    PageContext pageContext = _jspx_page_context;
-    JspWriter out = _jspx_page_context.getOut();
-    //  spring:message
-    org.springframework.web.servlet.tags.MessageTag _jspx_th_spring_005fmessage_005f8 = (org.springframework.web.servlet.tags.MessageTag) _005fjspx_005ftagPool_005fspring_005fmessage_0026_005fcode_005fnobody.get(org.springframework.web.servlet.tags.MessageTag.class);
-    _jspx_th_spring_005fmessage_005f8.setPageContext(_jspx_page_context);
-    _jspx_th_spring_005fmessage_005f8.setParent(null);
-    // /WEB-INF/jsp/user/login.jsp(48,29) name = code type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_spring_005fmessage_005f8.setCode("login.success");
-    int[] _jspx_push_body_count_spring_005fmessage_005f8 = new int[] { 0 };
-    try {
-      int _jspx_eval_spring_005fmessage_005f8 = _jspx_th_spring_005fmessage_005f8.doStartTag();
-      if (_jspx_th_spring_005fmessage_005f8.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
-        return true;
-      }
-    } catch (Throwable _jspx_exception) {
-      while (_jspx_push_body_count_spring_005fmessage_005f8[0]-- > 0)
-        out = _jspx_page_context.popBody();
-      _jspx_th_spring_005fmessage_005f8.doCatch(_jspx_exception);
-    } finally {
-      _jspx_th_spring_005fmessage_005f8.doFinally();
-      _005fjspx_005ftagPool_005fspring_005fmessage_0026_005fcode_005fnobody.reuse(_jspx_th_spring_005fmessage_005f8);
-    }
-    return false;
-  }
-
-  private boolean _jspx_meth_spring_005fmessage_005f9(PageContext _jspx_page_context)
-          throws Throwable {
-    PageContext pageContext = _jspx_page_context;
-    JspWriter out = _jspx_page_context.getOut();
-    //  spring:message
-    org.springframework.web.servlet.tags.MessageTag _jspx_th_spring_005fmessage_005f9 = (org.springframework.web.servlet.tags.MessageTag) _005fjspx_005ftagPool_005fspring_005fmessage_0026_005fcode_005fnobody.get(org.springframework.web.servlet.tags.MessageTag.class);
-    _jspx_th_spring_005fmessage_005f9.setPageContext(_jspx_page_context);
-    _jspx_th_spring_005fmessage_005f9.setParent(null);
-    // /WEB-INF/jsp/user/login.jsp(49,9) name = code type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_spring_005fmessage_005f9.setCode("login.redirect");
-    int[] _jspx_push_body_count_spring_005fmessage_005f9 = new int[] { 0 };
-    try {
-      int _jspx_eval_spring_005fmessage_005f9 = _jspx_th_spring_005fmessage_005f9.doStartTag();
-      if (_jspx_th_spring_005fmessage_005f9.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
-        return true;
-      }
-    } catch (Throwable _jspx_exception) {
-      while (_jspx_push_body_count_spring_005fmessage_005f9[0]-- > 0)
-        out = _jspx_page_context.popBody();
-      _jspx_th_spring_005fmessage_005f9.doCatch(_jspx_exception);
-    } finally {
-      _jspx_th_spring_005fmessage_005f9.doFinally();
-      _005fjspx_005ftagPool_005fspring_005fmessage_0026_005fcode_005fnobody.reuse(_jspx_th_spring_005fmessage_005f9);
     }
     return false;
   }

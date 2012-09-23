@@ -25,7 +25,7 @@
 						<fieldset>
 							<div class="control-group">
 								<label class="control-label" for="tb_userRole"><spring:message code="admin.user.create.role"/> : </label>
-								<div class="controls"><select name='s_userRole'><option value='ADMIN'><spring:message code="admin.user.create.role.admin"/></option><option value='USER'><spring:message code="admin.user.create.role.user"/></option></select></div>
+								<div class="controls"><select name='userRole'><option value='ADMIN'><spring:message code="admin.user.create.role.admin"/></option><option value='USER'><spring:message code="admin.user.create.role.user"/></option></select></div>
 							</div>
 						</fieldset>
 						

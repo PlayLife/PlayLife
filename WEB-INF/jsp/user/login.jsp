@@ -27,7 +27,7 @@
 			<fieldset>
 				<div class="control-group">
 					<label class="control-label" for="tb_password"><spring:message code="user.password"/> : </label>
-					<div class="controls"><input type="password" class="input-xlarge" id="tb_password" name='password' placeholder="<spring:message code="user.password"/>"/></div>
+					<div class="controls"><input type="password" class="input-xlarge" id="tb_password" name='password' placeholder="<spring:message code="user.password"/>"/> <a href='user/forgot'><spring:message code="login.forgotpassword"/></a></div>
 				</div>
 			</fieldset>
 			

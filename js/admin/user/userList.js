@@ -132,6 +132,7 @@ function bamButtonClick(e){
 		},
 		error : postConnectionErrorToDiv
 	});
+	return false;
 }
 
 function enableButtonClick(e){
@@ -149,4 +150,5 @@ function enableButtonClick(e){
 		},
 		error : postConnectionErrorToDiv
 	});
+	return false;
 }

@@ -12,14 +12,18 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.playlife.logic.user.PlayLifeUserService;
 import com.playlife.persistence.domainObject.PlayLifeUser;
 import com.playlife.persistence.domainObject.User_Role;
+import com.playlife.presentation.converters.JSONConverter;
 import com.playlife.utility.LocaleService;
 
 @Controller
 @RequestMapping("/template")
 public class TemplateController {
+	ObjectMapper mapper = JSONConverter.mapper;
+	
 	@Autowired
 	@Qualifier("playLifeUserService")
 	PlayLifeUserService playLifeUserService;
