@@ -74,6 +74,25 @@ public class AdminController {
 			return redirect(request, "admin/user/userList", false);
 	}
 	
+	@RequestMapping(value="/error/{action}")
+	protected String error_mainRequest(@PathVariable String action, HttpServletRequest request, HttpServletResponse response) throws IOException {
+		LocaleService.resolve(request, response);
+		 
+		return redirect(request, "admin/error/errorList", false);
+	}
+	
+	@RequestMapping(value="/error/errorList.json")
+	@ResponseBody
+	protected String errorListRequest(HttpServletRequest request, HttpServletResponse response) throws IOException {
+		LocaleService.resolve(request, response);
+		redirect(request, "", true);
+		
+		Map<String, Object> map_return = new HashMap<String, Object>();
+		
+		
+		return mapper.writeValueAsString(map_return);
+	}
+	
 	@RequestMapping(value="/user/userList.json")
 	@ResponseBody
 	protected String user_listRequest(@RequestParam(value="search", required=false) String search, int start, int end, @RequestParam(value="order", required=false) String order, @RequestParam(value="orderBy", required=false) String orderBy, HttpServletRequest request, HttpServletResponse response) throws IOException {
