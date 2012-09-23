@@ -1,6 +1,7 @@
 package com.playlife.persistence.domainObject;
 
 import java.io.Serializable;
+import java.util.Calendar;
 import java.util.HashSet;
 import java.util.Locale;
 import java.util.Set;
@@ -40,7 +41,7 @@ public class PlayLifeUser implements Serializable{
 	 * 				*
 	 ****************/
 	private static final long serialVersionUID = 1L;
-	private static String DEFAULT_USERNAME = "-----";
+	private static String DEFAULT_USERNAME = "";
 	
 	/********************
 	 * 					*
@@ -76,7 +77,7 @@ public class PlayLifeUser implements Serializable{
 		this(DEFAULT_USERNAME, email, password, Locale.getDefault(), User_Type.NORMAL);
 	}
 	public PlayLifeUser() {
-		this(DEFAULT_USERNAME, null, null, Locale.getDefault(), User_Type.UNKNOWN);
+		this(null, null, null, Locale.getDefault(), User_Type.UNKNOWN);
 	}
 	
 	/************************
@@ -186,6 +187,13 @@ public class PlayLifeUser implements Serializable{
 	public void setForgotCode(String forgotCode) {
 		this.forgotCode = forgotCode;
 	}
+	public Calendar getForgotDate() {
+		return forgotDate;
+	}
+	public void setForgotDate(Calendar forgotDate) {
+		this.forgotDate = forgotDate;
+	}
+
 
 	/****************
 	 * 				*
@@ -240,4 +248,7 @@ public class PlayLifeUser implements Serializable{
 	
 	@Column(name="forgotCode")
 	private String forgotCode;
+	
+	@Column(name="forgotDate")
+	private Calendar forgotDate;
 }

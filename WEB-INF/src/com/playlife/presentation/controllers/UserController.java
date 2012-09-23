@@ -73,6 +73,32 @@ public class UserController {
 		return "user/forgot";
 	}
 	
+	@RequestMapping(value="/accountSetting")
+	protected String accountSettingRequest(HttpServletRequest request, HttpServletResponse response, ModelMap model) throws Exception {
+		LocaleService.resolve(request, response);
+
+		return "user/accountSetting";
+	}
+	
+	@RequestMapping(value="/accountSetting.json")
+	@ResponseBody
+	protected String accountSettingModifyRequest(PlayLifeUser new_user, String old_password, String new_password, HttpServletRequest request, HttpServletResponse response, ModelMap model) throws IOException {
+		LocaleService.resolve(request, response);
+		
+		userValidator.validate(new_user);
+		
+		PlayLifeUser user = (PlayLifeUser)request.getSession().getAttribute("user");
+		
+		if (new_password != null && !new_password.isEmpty())
+			playLifeUserService.modifyPassword(user.getUserId(), old_password, new_password);
+		playLifeUserService.modifyUsername(user.getUserId(), new_user.getUsername());
+		user.setUsername(new_user.getUsername());
+		
+		Map<String, Object> map_return = new HashMap<String, Object>();
+		map_return.put("status", "ok");
+		return mapper.writeValueAsString(map_return);
+	}
+	
 	@RequestMapping(value="/sendForgotCode.json")
 	@ResponseBody
 	protected String sendForgotCodeRequest(String email, HttpServletRequest request, HttpServletResponse response, ModelMap model) throws Exception {
@@ -88,7 +114,7 @@ public class UserController {
 	@ResponseBody
 	protected String changePasswordRequest(String email, String forgotCode, String password, HttpServletRequest request, HttpServletResponse response, ModelMap model) throws Exception {
 		LocaleService.resolve(request, response);
-		playLifeUserService.changePassword(email, forgotCode, password);
+		request.getSession(true).setAttribute("user", playLifeUserService.changePassword(email, forgotCode, password));
 		
 		Map<String, Object> map_return = new HashMap<String, Object>();
 		map_return.put("status", "ok");
@@ -155,7 +181,7 @@ public class UserController {
 	@RequestMapping(value="/login.json")
 	@ResponseBody
 	protected String login(PlayLifeUser loginUser, HttpServletRequest request) throws JsonGenerationException, JsonMappingException, IOException {
-		PlayLifeUser user = playLifeUserService.getUserByEmailAllowNull(loginUser.getEmail());
+		PlayLifeUser user = playLifeUserService.login(loginUser);
 		if (user == null || user.type != User_Type.NORMAL)
 			throw new PresentationException(-9999);
 		

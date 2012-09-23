@@ -1,5 +1,6 @@
 package com.playlife.logic.user;
 
+import java.util.Calendar;
 import java.util.List;
 import java.util.Properties;
 
@@ -158,15 +159,42 @@ public class PlayLifeUserService {
 		}
 	}
 	
-	public void changePassword(String email, String forgotCode, String password){
+	public void modifyUsername(Long userId, String username) {
+		try {
+			PlayLifeUser user = accessService.checkUser(userId);
+			user.setUsername(username);
+			playLifeUserDAO.flush();
+		} catch (Exception ex){
+			throw new LogicException(-9999, ex);
+		}
+	}
+	
+	public void modifyPassword(Long userId, String old_password, String new_password) {
+		try {
+			PlayLifeUser user = accessService.checkUser(userId);
+			if (!user.getPassword().equals(old_password))
+				throw new LogicException(-9999);
+			
+			user.setPassword(new_password);
+		} catch (Exception ex){
+			throw new LogicException(-9999, ex);
+		}
+	}
+
+	public PlayLifeUser changePassword(String email, String forgotCode, String password){
 		try {
 			PlayLifeUser user = this.getUserByEmailAllowNull(email);
-			if (user == null || !user.getForgotCode().equals(forgotCode))
+			Calendar cal_now = Calendar.getInstance();
+			cal_now.add(Calendar.MINUTE, -1);
+			if (user == null || !user.getForgotCode().equals(forgotCode) || cal_now.after(user.getForgotDate()))
 				throw new LogicException(-9999);
 			
 			user.setPassword(password);
 			user.setForgotCode(null);
+			user.setForgotDate(null);
 			playLifeUserDAO.flush();
+			
+			return user;
 		} catch (Exception ex){
 			throw new LogicException(-9999, ex);
 		}
@@ -179,6 +207,7 @@ public class PlayLifeUserService {
 				/* Step 1 : Random Code */
 				String code = Integer.toString(Math.round(Math.abs(Random.randomInt())/100));
 				user.setForgotCode(code);
+				user.setForgotDate(Calendar.getInstance());
 				playLifeUserDAO.flush();
 				
 				/* Step 2 : Send Email */

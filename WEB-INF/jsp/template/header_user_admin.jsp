@@ -7,7 +7,6 @@
     <div class="container">
     	<a class="brand" href='/'><span class="topic red small">Play Life</span></a>
     	<ul class='nav pull-left'> 
-    		<li><a class='userFunction' href='/create'><spring:message code="userFunction.create"/></a></li>
     		<li><a class='userFunction' href='/admin/'><spring:message code="userFunction.admin"/></a></li>
     	</ul><!-- /.nav .pull-left -->
     	<ul class='nav pull-right'>

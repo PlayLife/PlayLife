@@ -63,10 +63,6 @@ public final class header_005fuser_005floggedin_jsp extends org.apache.jasper.ru
       out.write("    <div class=\"container\">\r\n");
       out.write("    \t<a class=\"brand\" href='/'><span class=\"topic red small\">Play Life</span></a>\r\n");
       out.write("    \t<ul class='nav pull-left'> \r\n");
-      out.write("    \t\t<li><a class='userFunction' href='/create'>");
-      if (_jspx_meth_spring_005fmessage_005f0(_jspx_page_context))
-        return;
-      out.write("</a></li>\r\n");
       out.write("    \t</ul><!-- /.nav .pull-left -->\r\n");
       out.write("    \t<ul class='nav pull-right'>\r\n");
       out.write("\t\t\t<li class=\"dropdown\">\r\n");
@@ -75,15 +71,15 @@ public final class header_005fuser_005floggedin_jsp extends org.apache.jasper.ru
       out.write("<b class=\"caret\"></b></a>\r\n");
       out.write("\t\t\t\t<ul class=\"dropdown-menu\">\r\n");
       out.write("\t\t\t\t\t<li><a href='/user/accountSetting'>");
-      if (_jspx_meth_spring_005fmessage_005f1(_jspx_page_context))
+      if (_jspx_meth_spring_005fmessage_005f0(_jspx_page_context))
         return;
       out.write("</a></li>\r\n");
       out.write("\t\t\t\t\t<li><a href='/language'>");
-      if (_jspx_meth_spring_005fmessage_005f2(_jspx_page_context))
+      if (_jspx_meth_spring_005fmessage_005f1(_jspx_page_context))
         return;
       out.write("</a></li>\r\n");
       out.write("\t\t\t\t\t<li><a href='/user/logout' class='userFunction'>");
-      if (_jspx_meth_spring_005fmessage_005f3(_jspx_page_context))
+      if (_jspx_meth_spring_005fmessage_005f2(_jspx_page_context))
         return;
       out.write("</a></li>\r\n");
       out.write("\t\t\t\t</ul>\r\n");
@@ -112,8 +108,8 @@ public final class header_005fuser_005floggedin_jsp extends org.apache.jasper.ru
     org.springframework.web.servlet.tags.MessageTag _jspx_th_spring_005fmessage_005f0 = (org.springframework.web.servlet.tags.MessageTag) _005fjspx_005ftagPool_005fspring_005fmessage_0026_005fcode_005fnobody.get(org.springframework.web.servlet.tags.MessageTag.class);
     _jspx_th_spring_005fmessage_005f0.setPageContext(_jspx_page_context);
     _jspx_th_spring_005fmessage_005f0.setParent(null);
-    // /WEB-INF/jsp/template/header_user_loggedin.jsp(10,49) name = code type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_spring_005fmessage_005f0.setCode("userFunction.create");
+    // /WEB-INF/jsp/template/header_user_loggedin.jsp(15,40) name = code type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_spring_005fmessage_005f0.setCode("userFunction.accountSetting");
     int[] _jspx_push_body_count_spring_005fmessage_005f0 = new int[] { 0 };
     try {
       int _jspx_eval_spring_005fmessage_005f0 = _jspx_th_spring_005fmessage_005f0.doStartTag();
@@ -139,8 +135,8 @@ public final class header_005fuser_005floggedin_jsp extends org.apache.jasper.ru
     org.springframework.web.servlet.tags.MessageTag _jspx_th_spring_005fmessage_005f1 = (org.springframework.web.servlet.tags.MessageTag) _005fjspx_005ftagPool_005fspring_005fmessage_0026_005fcode_005fnobody.get(org.springframework.web.servlet.tags.MessageTag.class);
     _jspx_th_spring_005fmessage_005f1.setPageContext(_jspx_page_context);
     _jspx_th_spring_005fmessage_005f1.setParent(null);
-    // /WEB-INF/jsp/template/header_user_loggedin.jsp(16,40) name = code type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_spring_005fmessage_005f1.setCode("userFunction.accountSetting");
+    // /WEB-INF/jsp/template/header_user_loggedin.jsp(16,29) name = code type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_spring_005fmessage_005f1.setCode("userFunction.language");
     int[] _jspx_push_body_count_spring_005fmessage_005f1 = new int[] { 0 };
     try {
       int _jspx_eval_spring_005fmessage_005f1 = _jspx_th_spring_005fmessage_005f1.doStartTag();
@@ -166,8 +162,8 @@ public final class header_005fuser_005floggedin_jsp extends org.apache.jasper.ru
     org.springframework.web.servlet.tags.MessageTag _jspx_th_spring_005fmessage_005f2 = (org.springframework.web.servlet.tags.MessageTag) _005fjspx_005ftagPool_005fspring_005fmessage_0026_005fcode_005fnobody.get(org.springframework.web.servlet.tags.MessageTag.class);
     _jspx_th_spring_005fmessage_005f2.setPageContext(_jspx_page_context);
     _jspx_th_spring_005fmessage_005f2.setParent(null);
-    // /WEB-INF/jsp/template/header_user_loggedin.jsp(17,29) name = code type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_spring_005fmessage_005f2.setCode("userFunction.language");
+    // /WEB-INF/jsp/template/header_user_loggedin.jsp(17,53) name = code type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_spring_005fmessage_005f2.setCode("userFunction.logout");
     int[] _jspx_push_body_count_spring_005fmessage_005f2 = new int[] { 0 };
     try {
       int _jspx_eval_spring_005fmessage_005f2 = _jspx_th_spring_005fmessage_005f2.doStartTag();
@@ -181,33 +177,6 @@ public final class header_005fuser_005floggedin_jsp extends org.apache.jasper.ru
     } finally {
       _jspx_th_spring_005fmessage_005f2.doFinally();
       _005fjspx_005ftagPool_005fspring_005fmessage_0026_005fcode_005fnobody.reuse(_jspx_th_spring_005fmessage_005f2);
-    }
-    return false;
-  }
-
-  private boolean _jspx_meth_spring_005fmessage_005f3(PageContext _jspx_page_context)
-          throws Throwable {
-    PageContext pageContext = _jspx_page_context;
-    JspWriter out = _jspx_page_context.getOut();
-    //  spring:message
-    org.springframework.web.servlet.tags.MessageTag _jspx_th_spring_005fmessage_005f3 = (org.springframework.web.servlet.tags.MessageTag) _005fjspx_005ftagPool_005fspring_005fmessage_0026_005fcode_005fnobody.get(org.springframework.web.servlet.tags.MessageTag.class);
-    _jspx_th_spring_005fmessage_005f3.setPageContext(_jspx_page_context);
-    _jspx_th_spring_005fmessage_005f3.setParent(null);
-    // /WEB-INF/jsp/template/header_user_loggedin.jsp(18,53) name = code type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_spring_005fmessage_005f3.setCode("userFunction.logout");
-    int[] _jspx_push_body_count_spring_005fmessage_005f3 = new int[] { 0 };
-    try {
-      int _jspx_eval_spring_005fmessage_005f3 = _jspx_th_spring_005fmessage_005f3.doStartTag();
-      if (_jspx_th_spring_005fmessage_005f3.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
-        return true;
-      }
-    } catch (Throwable _jspx_exception) {
-      while (_jspx_push_body_count_spring_005fmessage_005f3[0]-- > 0)
-        out = _jspx_page_context.popBody();
-      _jspx_th_spring_005fmessage_005f3.doCatch(_jspx_exception);
-    } finally {
-      _jspx_th_spring_005fmessage_005f3.doFinally();
-      _005fjspx_005ftagPool_005fspring_005fmessage_0026_005fcode_005fnobody.reuse(_jspx_th_spring_005fmessage_005f3);
     }
     return false;
   }

@@ -1,11 +1,9 @@
 $(document).ready(function(e){
 	/* Set up validation */
 	var valid_password = new LiveValidation('tb_new_password');
-	valid_password.add( Validate.Presence, { failureMessage: message.user.password.required } );
 	valid_password.add( Validate.Length, { minimum: 4, tooShortMessage: message.user.password.minimum} );
 	
 	var valid_confirmPassword = new LiveValidation('tb_confirm_new_password');
-	valid_confirmPassword.add( Validate.Presence, { failureMessage: message.user.confirmPassword.required } );
 	valid_confirmPassword.add( Validate.Confirmation, { match: 'tb_new_password', failureMessage: message.user.confirmPassword.matches } );
 	
 	var valid_username = new LiveValidation('tb_username');

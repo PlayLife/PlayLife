@@ -129,7 +129,7 @@ public final class login_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\t\t\t\t\t<div class=\"controls\"><input type=\"password\" class=\"input-xlarge\" id=\"tb_password\" name='password' placeholder=\"");
       if (_jspx_meth_spring_005fmessage_005f5(_jspx_page_context))
         return;
-      out.write("\"/> <a href='user/forgot'>");
+      out.write("\"/> <a href='/user/forgot'>");
       if (_jspx_meth_spring_005fmessage_005f6(_jspx_page_context))
         return;
       out.write("</a></div>\r\n");
@@ -350,7 +350,7 @@ public final class login_jsp extends org.apache.jasper.runtime.HttpJspBase
     org.springframework.web.servlet.tags.MessageTag _jspx_th_spring_005fmessage_005f6 = (org.springframework.web.servlet.tags.MessageTag) _005fjspx_005ftagPool_005fspring_005fmessage_0026_005fcode_005fnobody.get(org.springframework.web.servlet.tags.MessageTag.class);
     _jspx_th_spring_005fmessage_005f6.setPageContext(_jspx_page_context);
     _jspx_th_spring_005fmessage_005f6.setParent(null);
-    // /WEB-INF/jsp/user/login.jsp(30,181) name = code type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /WEB-INF/jsp/user/login.jsp(30,182) name = code type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_spring_005fmessage_005f6.setCode("login.forgotpassword");
     int[] _jspx_push_body_count_spring_005fmessage_005f6 = new int[] { 0 };
     try {
