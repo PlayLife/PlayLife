@@ -85,9 +85,15 @@ public class AdminController {
 		return redirect(request, "admin/error/errorList", false);
 	}
 	
+	@SuppressWarnings ("unchecked")
 	@RequestMapping(value="/error/detail/{action}")
-	protected String errorDetail_mainRequest(@PathVariable String s_fileName, HttpServletRequest request, HttpServletResponse response) throws IOException {
+	protected String errorDetail_mainRequest(@PathVariable String s_fileName, HttpServletRequest request, HttpServletResponse response, ModelMap model) throws IOException {
 		LocaleService.resolve(request, response);
+		
+		File f_log = new File(request.getRealPath("") + ErrorSetting.ERROR_LOG_PATH+s_fileName+ErrorSetting.ERROR_LOG_EXTENSION);
+		if (f_log!=null && f_log.isFile() && f_log.canRead()) {
+			model.addAllAttributes(mapper.readValue(f_log, Map.class));
+		}
 		
 		return redirect(request, "admin/error/detail", false);
 	}
