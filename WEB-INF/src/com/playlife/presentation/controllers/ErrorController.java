@@ -74,7 +74,7 @@ public class ErrorController {
 		try {
 			@SuppressWarnings ("unchecked")
 			Map<String, Object> m_error = mapper.readValue(s_log, Map.class);
-			m_error.put("ip", request.getLocalAddr());
+			m_error.put("ip", request.getRemoteAddr());
 			m_error.put("time", ErrorSetting.ERROR_LOG_TIME_FORMATTER.format(Calendar.getInstance().getTime()));
 
 			String s_logFileName = m_error.get("time") + "_" + m_error.get("ip");
