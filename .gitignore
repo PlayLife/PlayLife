@@ -3,5 +3,6 @@
 # Package Files #
 *.war
 *.ear
+*.log
 
 work/*.*
