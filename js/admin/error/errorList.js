@@ -57,7 +57,7 @@ function updateTable(){
 						$('<td />').html(error.ip).appendTo(tr);
 						$('<td />').html(error.time).appendTo(tr);
 						$('<td />').html(error.displayMessage).appendTo(tr);
-						$('<a />').html('Details').attr({href: '/admin/error/detail/' + error.time + '_' + error.ip}).appendTo($('<td />').appendTo(tr));
+						$('<a />').html('Details').attr({href: '/admin/error/detail/' + error.time + '_' + error.ipLink}).appendTo($('<td />').appendTo(tr));
 					});
 				}
 				$('#span_total').html(data.count);

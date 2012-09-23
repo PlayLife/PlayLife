@@ -54,34 +54,34 @@ public final class nav_jsp extends org.apache.jasper.runtime.HttpJspBase
       out = pageContext.getOut();
       _jspx_out = out;
 
-      out.write("\r\n");
-      out.write("\r\n");
-      out.write("\r\n");
-      out.write("<ul class=\"well nav nav-list\">\r\n");
+      out.write("\n");
+      out.write("\n");
+      out.write("\n");
+      out.write("<ul class=\"well nav nav-list\">\n");
       out.write("  <li><a href=\"/admin/dashboard\"><i class=\"icon-hdd\"></i> ");
       if (_jspx_meth_spring_005fmessage_005f0(_jspx_page_context))
         return;
-      out.write("</a></li>\r\n");
+      out.write("</a></li>\n");
       out.write("  <li class=\"nav-header\">");
       if (_jspx_meth_spring_005fmessage_005f1(_jspx_page_context))
         return;
-      out.write("</li>\r\n");
+      out.write("</li>\n");
       out.write("  <li><a href=\"/admin/user/list\"><i class=\"icon-user\"></i>");
       if (_jspx_meth_spring_005fmessage_005f2(_jspx_page_context))
         return;
-      out.write("</a></li>\r\n");
+      out.write("</a></li>\n");
       out.write("  <li><a href=\"/admin/user/create\"><i class=\"icon-plus-sign\"></i>");
       if (_jspx_meth_spring_005fmessage_005f3(_jspx_page_context))
         return;
-      out.write("</a></li>\r\n");
+      out.write("</a></li>\n");
       out.write("  <li class=\"nav-header\">");
       if (_jspx_meth_spring_005fmessage_005f4(_jspx_page_context))
         return;
-      out.write("</li>\r\n");
+      out.write("</li>\n");
       out.write("  <li><a href=\"/admin/error/list\"><i class=\"icon-user\"></i>");
       if (_jspx_meth_spring_005fmessage_005f5(_jspx_page_context))
         return;
-      out.write("</a></li>\r\n");
+      out.write("</a></li>\n");
       out.write("</ul>");
     } catch (Throwable t) {
       if (!(t instanceof SkipPageException)){

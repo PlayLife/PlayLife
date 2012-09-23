@@ -86,11 +86,12 @@ public class AdminController {
 	}
 	
 	@SuppressWarnings ("unchecked")
-	@RequestMapping(value="/error/detail/{action}")
+	@RequestMapping(value="/error/detail/{s_fileName}")
 	protected String errorDetail_mainRequest(@PathVariable String s_fileName, HttpServletRequest request, HttpServletResponse response, ModelMap model) throws IOException {
 		LocaleService.resolve(request, response);
 		
-		File f_log = new File(request.getRealPath("") + ErrorSetting.ERROR_LOG_PATH+s_fileName+ErrorSetting.ERROR_LOG_EXTENSION);
+		@SuppressWarnings ("deprecation")
+		File f_log = new File(request.getRealPath("") + ErrorSetting.ERROR_LOG_PATH+s_fileName.replace("-", ".")+ErrorSetting.ERROR_LOG_EXTENSION);
 		if (f_log!=null && f_log.isFile() && f_log.canRead()) {
 			model.addAllAttributes(mapper.readValue(f_log, Map.class));
 		}
@@ -133,6 +134,7 @@ public class AdminController {
 				Map<String, Object> error = new HashMap<String, Object>();
 				error.put("time", log_error.get("time"));
 				error.put("ip", log_error.get("ip"));
+				error.put("ipLink",  log_error.get("ip").toString().replace(".","-"));
 				error.put("displayMessage", log_error.get("displayMessage").toString().replace("==/==", "'"));
 				list_error.add(error);
 			}
