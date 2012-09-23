@@ -6,4 +6,6 @@
   <li class="nav-header"><spring:message code="admin.nav.userAdmin"/></li>
   <li><a href="/admin/user/list"><i class="icon-user"></i><spring:message code="admin.nav.userList"/></a></li>
   <li><a href="/admin/user/create"><i class="icon-plus-sign"></i><spring:message code="admin.nav.createUser"/></a></li>
+  <li class="nav-header"><spring:message code="admin.nav.errorAdmin"/></li>
+  <li><a href="/admin/error/list"><i class="icon-user"></i><spring:message code="admin.nav.errorList"/></a></li>
 </ul>

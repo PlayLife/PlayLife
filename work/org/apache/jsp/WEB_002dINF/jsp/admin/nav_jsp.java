@@ -74,6 +74,14 @@ public final class nav_jsp extends org.apache.jasper.runtime.HttpJspBase
       if (_jspx_meth_spring_005fmessage_005f3(_jspx_page_context))
         return;
       out.write("</a></li>\r\n");
+      out.write("  <li class=\"nav-header\">");
+      if (_jspx_meth_spring_005fmessage_005f4(_jspx_page_context))
+        return;
+      out.write("</li>\r\n");
+      out.write("  <li><a href=\"/admin/error/list\"><i class=\"icon-user\"></i>");
+      if (_jspx_meth_spring_005fmessage_005f5(_jspx_page_context))
+        return;
+      out.write("</a></li>\r\n");
       out.write("</ul>");
     } catch (Throwable t) {
       if (!(t instanceof SkipPageException)){
@@ -191,6 +199,60 @@ public final class nav_jsp extends org.apache.jasper.runtime.HttpJspBase
     } finally {
       _jspx_th_spring_005fmessage_005f3.doFinally();
       _005fjspx_005ftagPool_005fspring_005fmessage_0026_005fcode_005fnobody.reuse(_jspx_th_spring_005fmessage_005f3);
+    }
+    return false;
+  }
+
+  private boolean _jspx_meth_spring_005fmessage_005f4(PageContext _jspx_page_context)
+          throws Throwable {
+    PageContext pageContext = _jspx_page_context;
+    JspWriter out = _jspx_page_context.getOut();
+    //  spring:message
+    org.springframework.web.servlet.tags.MessageTag _jspx_th_spring_005fmessage_005f4 = (org.springframework.web.servlet.tags.MessageTag) _005fjspx_005ftagPool_005fspring_005fmessage_0026_005fcode_005fnobody.get(org.springframework.web.servlet.tags.MessageTag.class);
+    _jspx_th_spring_005fmessage_005f4.setPageContext(_jspx_page_context);
+    _jspx_th_spring_005fmessage_005f4.setParent(null);
+    // /WEB-INF/jsp/admin/nav.jsp(9,25) name = code type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_spring_005fmessage_005f4.setCode("admin.nav.errorAdmin");
+    int[] _jspx_push_body_count_spring_005fmessage_005f4 = new int[] { 0 };
+    try {
+      int _jspx_eval_spring_005fmessage_005f4 = _jspx_th_spring_005fmessage_005f4.doStartTag();
+      if (_jspx_th_spring_005fmessage_005f4.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+        return true;
+      }
+    } catch (Throwable _jspx_exception) {
+      while (_jspx_push_body_count_spring_005fmessage_005f4[0]-- > 0)
+        out = _jspx_page_context.popBody();
+      _jspx_th_spring_005fmessage_005f4.doCatch(_jspx_exception);
+    } finally {
+      _jspx_th_spring_005fmessage_005f4.doFinally();
+      _005fjspx_005ftagPool_005fspring_005fmessage_0026_005fcode_005fnobody.reuse(_jspx_th_spring_005fmessage_005f4);
+    }
+    return false;
+  }
+
+  private boolean _jspx_meth_spring_005fmessage_005f5(PageContext _jspx_page_context)
+          throws Throwable {
+    PageContext pageContext = _jspx_page_context;
+    JspWriter out = _jspx_page_context.getOut();
+    //  spring:message
+    org.springframework.web.servlet.tags.MessageTag _jspx_th_spring_005fmessage_005f5 = (org.springframework.web.servlet.tags.MessageTag) _005fjspx_005ftagPool_005fspring_005fmessage_0026_005fcode_005fnobody.get(org.springframework.web.servlet.tags.MessageTag.class);
+    _jspx_th_spring_005fmessage_005f5.setPageContext(_jspx_page_context);
+    _jspx_th_spring_005fmessage_005f5.setParent(null);
+    // /WEB-INF/jsp/admin/nav.jsp(10,59) name = code type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_spring_005fmessage_005f5.setCode("admin.nav.errorList");
+    int[] _jspx_push_body_count_spring_005fmessage_005f5 = new int[] { 0 };
+    try {
+      int _jspx_eval_spring_005fmessage_005f5 = _jspx_th_spring_005fmessage_005f5.doStartTag();
+      if (_jspx_th_spring_005fmessage_005f5.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+        return true;
+      }
+    } catch (Throwable _jspx_exception) {
+      while (_jspx_push_body_count_spring_005fmessage_005f5[0]-- > 0)
+        out = _jspx_page_context.popBody();
+      _jspx_th_spring_005fmessage_005f5.doCatch(_jspx_exception);
+    } finally {
+      _jspx_th_spring_005fmessage_005f5.doFinally();
+      _005fjspx_005ftagPool_005fspring_005fmessage_0026_005fcode_005fnobody.reuse(_jspx_th_spring_005fmessage_005f5);
     }
     return false;
   }

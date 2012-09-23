@@ -81,6 +81,13 @@ public class AdminController {
 		return redirect(request, "admin/error/errorList", false);
 	}
 	
+	@RequestMapping(value="/error/detail/{action}")
+	protected String errorDetail_mainRequest(@PathVariable String s_fileName, HttpServletRequest request, HttpServletResponse response) throws IOException {
+		LocaleService.resolve(request, response);
+		
+		return redirect(request, "admin/error/detail", false);
+	}
+	
 	@RequestMapping(value="/error/errorList.json")
 	@ResponseBody
 	protected String errorListRequest(HttpServletRequest request, HttpServletResponse response) throws IOException {
@@ -88,7 +95,8 @@ public class AdminController {
 		redirect(request, "", true);
 		
 		Map<String, Object> map_return = new HashMap<String, Object>();
-		
+		map_return.put("errorList", "[]");
+		map_return.put("status", "ok");
 		
 		return mapper.writeValueAsString(map_return);
 	}
