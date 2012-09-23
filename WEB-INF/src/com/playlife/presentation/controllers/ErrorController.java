@@ -65,6 +65,7 @@ public class ErrorController {
 		return "error/show";
 	}
 
+	@SuppressWarnings ("deprecation")
 	@RequestMapping (value = "/log.json")
 	@ResponseBody
 	protected String logRequest(String s_log, HttpServletRequest request, HttpServletResponse response, ModelMap model) throws IOException {
@@ -72,13 +73,17 @@ public class ErrorController {
 
 		Writer errorWriter = null;
 		try {
+			File f_logFolder=new File(request.getRealPath("") + ErrorSetting.ERROR_LOG_PATH);
+			if (!f_logFolder.exists()) {
+				f_logFolder.mkdir();
+			}
+			
 			@SuppressWarnings ("unchecked")
 			Map<String, Object> m_error = mapper.readValue(s_log, Map.class);
 			m_error.put("ip", request.getRemoteAddr());
 			m_error.put("time", ErrorSetting.ERROR_LOG_TIME_FORMATTER.format(Calendar.getInstance().getTime()));
 
 			String s_logFileName = m_error.get("time") + "_" + m_error.get("ip");
-			@SuppressWarnings ("deprecation")
 			String s_logFilePath = request.getRealPath("") + ErrorSetting.ERROR_LOG_PATH + s_logFileName + ErrorSetting.ERROR_LOG_EXTENSION;
 			errorWriter = new BufferedWriter(new FileWriter(new File(s_logFilePath)));
 			errorWriter.write(mapper.writeValueAsString(m_error));

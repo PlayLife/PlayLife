@@ -84,7 +84,6 @@ public class AdminController {
 
 		return redirect(request, "admin/error/errorList", false);
 	}
-<<<<<<< HEAD
 	
 	@RequestMapping(value="/error/detail/{action}")
 	protected String errorDetail_mainRequest(@PathVariable String s_fileName, HttpServletRequest request, HttpServletResponse response) throws IOException {
@@ -94,10 +93,6 @@ public class AdminController {
 	}
 	
 	@RequestMapping(value="/error/errorList.json")
-=======
-
-	@RequestMapping (value = "/error/errorList.json")
->>>>>>> bc4d24d0f29c67b18c7d3df8fcc4090bd04a2b0d
 	@ResponseBody
 	protected String errorListRequest(@RequestParam (value = "search", required = false) final String search, int start, int end,
 		HttpServletRequest request, HttpServletResponse response) throws IOException {
@@ -139,16 +134,11 @@ public class AdminController {
 		}
 
 		Map<String, Object> map_return = new HashMap<String, Object>();
-<<<<<<< HEAD
-		map_return.put("errorList", "[]");
-		map_return.put("status", "ok");
-		
-=======
+
 		map_return.put("errorList", list_error);
 		map_return.put("count", list_error.size());
 		map_return.put("status", "ok");
 
->>>>>>> bc4d24d0f29c67b18c7d3df8fcc4090bd04a2b0d
 		return mapper.writeValueAsString(map_return);
 	}
 
