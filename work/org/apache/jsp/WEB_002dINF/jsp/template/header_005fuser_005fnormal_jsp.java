@@ -54,31 +54,31 @@ public final class header_005fuser_005fnormal_jsp extends org.apache.jasper.runt
       out = pageContext.getOut();
       _jspx_out = out;
 
-      out.write("\r\n");
-      out.write("\r\n");
-      out.write("<div class=\"navbar navbar-fixed-top\">\r\n");
-      out.write("  <div class=\"navbar-inner\">\r\n");
-      out.write("    <div class=\"container\">\r\n");
-      out.write("    \t<a class=\"brand\" href='/'><span class=\"topic red small\">Play Life</span></a>\r\n");
-      out.write("    \t<ul class='nav pull-left'>\r\n");
-      out.write("    \t</ul><!-- /.nav .pull-left -->\r\n");
-      out.write("    \t<ul class='nav pull-right'>\r\n");
+      out.write("\n");
+      out.write("\n");
+      out.write("<div class=\"navbar navbar-fixed-top\">\n");
+      out.write("  <div class=\"navbar-inner\">\n");
+      out.write("    <div class=\"container\">\n");
+      out.write("    \t<a class=\"brand\" href='/'><span class=\"topic red small\">Play Life</span></a>\n");
+      out.write("    \t<ul class='nav pull-left'>\n");
+      out.write("    \t</ul><!-- /.nav .pull-left -->\n");
+      out.write("    \t<ul class='nav pull-right'>\n");
       out.write("    \t\t<li><a class='userFunction' href='/user/register'>");
       if (_jspx_meth_spring_005fmessage_005f0(_jspx_page_context))
         return;
-      out.write("</a></li> \r\n");
+      out.write("</a></li> \n");
       out.write("    \t\t<li><a class='userFunction' href='/user/login'>");
       if (_jspx_meth_spring_005fmessage_005f1(_jspx_page_context))
         return;
-      out.write("</a></li>\r\n");
+      out.write("</a></li>\n");
       out.write("    \t\t<li><a href='/language'>");
       if (_jspx_meth_spring_005fmessage_005f2(_jspx_page_context))
         return;
-      out.write("</a></li>\r\n");
-      out.write("    \t</ul><!-- /.nav .pull-right -->\r\n");
-      out.write("    </div><!-- /.container -->\r\n");
-      out.write("   </div><!-- /.navbar-inner -->\r\n");
-      out.write("</div><!-- /.navbar -->\r\n");
+      out.write("</a></li>\n");
+      out.write("    \t</ul><!-- /.nav .pull-right -->\n");
+      out.write("    </div><!-- /.container -->\n");
+      out.write("   </div><!-- /.navbar-inner -->\n");
+      out.write("</div><!-- /.navbar -->\n");
     } catch (Throwable t) {
       if (!(t instanceof SkipPageException)){
         out = _jspx_out;
