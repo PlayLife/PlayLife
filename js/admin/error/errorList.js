@@ -45,7 +45,7 @@ function updateTable(){
 					var tr = $('<tr />').appendTo($('#table_error tbody'));
 					var td = $('<td />').attr({colspan : '4'}).appendTo(tr);
 					var div = $('<div />').addClass('').appendTo(td);
-					$('<strong />').html('No Matched User').appendTo(div);
+					$('<strong />').html('No Matched Error').appendTo(div);
 				} else {
 					/************************
 					 *  					*
@@ -53,7 +53,7 @@ function updateTable(){
 					 *						*
 					 ************************/
 					$.each(data.errorList, function(idx, error){
-						var tr = $('<tr />').appendTo($('#table_user tbody'));
+						var tr = $('<tr />').appendTo($('#table_error tbody'));
 						$('<td />').html(error.ip).appendTo(tr);
 						$('<td />').html(error.time).appendTo(tr);
 						$('<td />').html(error.displayMessage).appendTo(tr);

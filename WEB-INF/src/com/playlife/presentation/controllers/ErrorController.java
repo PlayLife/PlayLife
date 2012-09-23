@@ -74,7 +74,7 @@ public class ErrorController {
 		try {
 			@SuppressWarnings ("unchecked")
 			Map<String, Object> m_error = mapper.readValue(s_log, Map.class);
-			m_error.put("ip", request.getRemoteAddr());
+			m_error.put("ip", request.getRemoteAddr().replace(":", "."));
 			m_error.put("time", ErrorSetting.ERROR_LOG_TIME_FORMATTER.format(Calendar.getInstance().getTime()));
 
 			String s_logFileName = m_error.get("time") + "_" + m_error.get("ip");
@@ -82,11 +82,9 @@ public class ErrorController {
 			String s_logFilePath = request.getRealPath("") + ErrorSetting.ERROR_LOG_PATH + s_logFileName + ErrorSetting.ERROR_LOG_EXTENSION;
 			errorWriter = new BufferedWriter(new FileWriter(new File(s_logFilePath)));
 			errorWriter.write(mapper.writeValueAsString(m_error));
-		}
-		catch (Exception ex) {
+		} catch (Exception ex) {
 			throw new PresentationException(-9999, ex);
-		}
-		finally {
+		} finally {
 			try {
 				if (errorWriter != null) {
 					errorWriter.close();

@@ -105,11 +105,10 @@ public class AdminController {
 		File f_logFolder = new File(request.getRealPath("") + ErrorSetting.ERROR_LOG_PATH);
 		if (f_logFolder != null && f_logFolder.isDirectory()) {
 			List<File> logFileList = Arrays.asList(f_logFolder.listFiles(new FileFilter() {
-
 				@Override
 				public boolean accept(File pathname) {
 					if (pathname.isFile() && pathname.getName().endsWith(ErrorSetting.ERROR_LOG_EXTENSION) && pathname.canRead()) {
-						if (search == null || pathname.getName().matches(search + ErrorSetting.ERROR_LOG_EXTENSION)) return true;
+						if (search == null || search.isEmpty() || pathname.getName().matches(search + ErrorSetting.ERROR_LOG_EXTENSION)) return true;
 					}
 					return false;
 				}
