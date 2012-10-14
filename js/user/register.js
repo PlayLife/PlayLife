@@ -45,7 +45,7 @@ $(document).ready(function(e){
 				$('#form_register').flipContent($('#div_register_success'));
 				setTimeout('window.location = "/"', 3000);
 			} else {
-				var div_error = $('#div_error').removeClass('hide').empty();;
+				var div_error = $('#div_error').removeClass('hide').empty();
 				var div = $('<div />').addClass('alert alert-error').appendTo(div_error);
 				var a_close = $('<a data-dismiss="alert"/>').attr({href : '#'}).addClass('close').html('x').appendTo(div);
 				$('<strong />').attr({id : 'strong_error'}).html(SERVER_ERROR_TITLE).appendTo(div);

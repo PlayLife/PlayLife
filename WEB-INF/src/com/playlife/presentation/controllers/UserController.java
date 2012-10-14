@@ -52,6 +52,8 @@ public class UserController {
 	Client client = new Client("288454414516535", "1692468f44286665c477a2c73c59c52c");
 	FacebookFactory facebookFactory;
 	
+	String s_domain = "http://playlife.no-ip.org:8080/";
+	
 	@RequestMapping(value="/register")
 	protected String registerRequest(HttpServletRequest request, HttpServletResponse response, ModelMap model) throws Exception {
 		LocaleService.resolve(request, response);
@@ -128,7 +130,8 @@ public class UserController {
 		
 		facebookFactory = new FacebookFactory(client);
 		
-		response.sendRedirect(facebookFactory.getRedirectURL("http://playlife.no-ip.org:8080/user/facebook/create", Display.POPUP, Permission.EMAIL, Permission.OFFLINE_ACCESS));
+		//http://playlife.no-ip.org:8080/user/facebook/create
+		response.sendRedirect(facebookFactory.getRedirectURL(s_domain + "user/facebook/create", Display.POPUP, Permission.EMAIL, Permission.OFFLINE_ACCESS));
 		return "";
 	}
 	
@@ -137,7 +140,7 @@ public class UserController {
 	protected String FacebookRequest(HttpServletRequest request, HttpServletResponse response, String code) throws Exception {
 		LocaleService.resolve(request, response);
 		
-		OAuthAccessToken accessToken = facebookFactory.getOAuthAccessToken(code, "http://playlife.no-ip.org:8080/user/facebook/create");
+		OAuthAccessToken accessToken = facebookFactory.getOAuthAccessToken(code, s_domain + "user/facebook/create");
 		Facebook facebook = facebookFactory.getInstance(accessToken);
 		User fbUser = facebook.getCurrentUser();
 		

@@ -18,7 +18,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
-import com.playlife.logic.access.IAccessService;
+import com.playlife.logic.access.AccessService;
 import com.playlife.persistence.DAO.PlayLifeUserDAO;
 import com.playlife.persistence.domainObject.PlayLifeUser;
 import com.playlife.persistence.domainObject.User_Role;
@@ -41,7 +41,7 @@ public class PlayLifeUserService {
 	
 	@Autowired
 	@Qualifier("accessService")
-	private IAccessService accessService;
+	private AccessService accessService;
 	
 	/************************
 	 * 						*

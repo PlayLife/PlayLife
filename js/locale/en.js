@@ -18,5 +18,18 @@ var message = {
 			minimum : "Username must not less than 3 characters long.",
 			maximum : "Username must not more than 20 characters long."
 		}
+	},
+	
+	book : {
+		title: {
+			required: "Book Title is required."
+		},
+		cost : {
+			required: "Cost is required."
+		},
+		date : {
+			required: "Date is required.",
+			startEndDate: "Start date should be ealier than end date."
+		}
 	}
 };

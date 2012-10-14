@@ -63,122 +63,124 @@ public final class show_jsp extends org.apache.jasper.runtime.HttpJspBase
       out = pageContext.getOut();
       _jspx_out = out;
 
-      out.write("\n");
-      out.write("\n");
-      out.write("\n");
-      out.write("<!DOCTYPE html PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\" \"http://www.w3.org/TR/html4/loose.dtd\">\n");
-      out.write("<html>\n");
-      out.write("<head>\n");
-      out.write("\t<title>Error</title>\n");
+      out.write("\r\n");
+      out.write("\r\n");
+      out.write("\r\n");
+      out.write("<!DOCTYPE html PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\" \"http://www.w3.org/TR/html4/loose.dtd\">\r\n");
+      out.write("<html>\r\n");
+      out.write("<head>\r\n");
+      out.write("\t<title>Error</title>\r\n");
       out.write("\t");
-      out.write("<link rel=\"stylesheet\" type=\"text/css\" href=\"/css/jquery/jquery-ui-1.8.16.custom.css\" />\n");
-      out.write("<link rel=\"stylesheet\" type=\"text/css\" href=\"/css/jquery/jquery.jgrowl.css\" />\n");
-      out.write("<link rel=\"stylesheet\" type=\"text/css\" href=\"/css/bootstrap/bootstrap.css\" />\n");
-      out.write("<link rel=\"stylesheet\" type=\"text/css\" href=\"/css/bootstrap/bootstrap-responsive.css\" />\n");
-      out.write("<link rel=\"stylesheet\" type=\"text/css\" href=\"/css/main.css\" />\n");
-      out.write("\n");
-      out.write("<script src='/js/jquery/jquery-1.7.2.min.js'></script>\n");
-      out.write("<script src='/js/jquery/jquery-ui-1.8.17.custom.min.js'></script>\n");
-      out.write("<script src='/js/jquery/jquery.jgrowl_minimized.js'></script>\n");
-      out.write("<script src='/js/jquery/jquery.blockUI.js'></script>\n");
-      out.write("<script src='/js/jquery/jquery.form.js'></script>\n");
-      out.write("<script src='/js/jquery/jquery.animate-shadow-min.js'></script>\n");
-      out.write("<script src='/js/jquery/jquery.transform-0.6.2.min.js'></script>\n");
-      out.write("<script src='/js/jquery/jquery.livevalidation.js'></script>\n");
-      out.write("<script src='/template/locale.js'></script>\n");
-      out.write("<script src='/js/bootstrap/bootstrap.min.js'></script>\n");
-      out.write("<script src='/js/font/cufon-yui.js'></script>\n");
-      out.write("<script src='/js/font/Needlework_Good.font.js'></script>\n");
+      out.write("<link rel=\"stylesheet\" type=\"text/css\" href=\"/css/jquery/jquery-ui-1.8.16.custom.css\" />\r\n");
+      out.write("<link rel=\"stylesheet\" type=\"text/css\" href=\"/css/jquery/jquery.jgrowl.css\" />\r\n");
+      out.write("<link rel=\"stylesheet\" type=\"text/css\" href=\"/css/bootstrap/bootstrap.css\" />\r\n");
+      out.write("<link rel=\"stylesheet\" type=\"text/css\" href=\"/css/bootstrap/bootstrap-responsive.css\" />\r\n");
+      out.write("<link rel=\"stylesheet\" type=\"text/css\" href=\"/css/bootstrap/datepicker.css\" />\r\n");
+      out.write("<link rel=\"stylesheet\" type=\"text/css\" href=\"/css/main.css\" />\r\n");
+      out.write("\r\n");
+      out.write("<script src='/js/jquery/jquery-1.7.2.min.js'></script>\r\n");
+      out.write("<script src='/js/jquery/jquery-ui-1.8.17.custom.min.js'></script>\r\n");
+      out.write("<script src='/js/jquery/jquery.jgrowl_minimized.js'></script>\r\n");
+      out.write("<script src='/js/jquery/jquery.blockUI.js'></script>\r\n");
+      out.write("<script src='/js/jquery/jquery.form.js'></script>\r\n");
+      out.write("<script src='/js/jquery/jquery.animate-shadow-min.js'></script>\r\n");
+      out.write("<script src='/js/jquery/jquery.transform-0.6.2.min.js'></script>\r\n");
+      out.write("<script src='/js/jquery/jquery.livevalidation.js'></script>\r\n");
+      out.write("<script src='/template/locale.js'></script>\r\n");
+      out.write("<script src='/js/bootstrap/bootstrap.min.js'></script>\r\n");
+      out.write("<script src='/js/bootstrap/bootstrap-datepicker.js'></script>\r\n");
+      out.write("<script src='/js/font/cufon-yui.js'></script>\r\n");
+      out.write("<script src='/js/font/Needlework_Good.font.js'></script>\r\n");
       out.write("<script src='/js/main.js'></script>");
-      out.write(" \n");
-      out.write("\t<script type='text/javascript' src='/js/error/show.js'></script>\n");
-      out.write("\t<link rel=\"stylesheet\" type=\"text/css\" href=\"/css/error/show.css\" />\n");
-      out.write("\t<script>\n");
+      out.write(" \r\n");
+      out.write("\t<script type='text/javascript' src='/js/error/show.js'></script>\r\n");
+      out.write("\t<link rel=\"stylesheet\" type=\"text/css\" href=\"/css/error/show.css\" />\r\n");
+      out.write("\t<script>\r\n");
       out.write("\tvar s_log = '");
       out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${s_log}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
-      out.write("';\n");
-      out.write("\t</script>\n");
-      out.write("</head>\n");
-      out.write("<body>\n");
-      out.write("\t<div class='container'>\n");
+      out.write("';\r\n");
+      out.write("\t</script>\r\n");
+      out.write("</head>\r\n");
+      out.write("<body>\r\n");
+      out.write("\t<div class='container'>\r\n");
       out.write("\t\t");
       org.apache.jasper.runtime.JspRuntimeLibrary.include(request, response, "/template/userHeader", out, false);
-      out.write("\n");
-      out.write("        <div id='div_show' class='well'>\n");
+      out.write("\r\n");
+      out.write("        <div id='div_show' class='well'>\r\n");
       out.write("\t        <h1 class='red big'>");
       out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${displayMessage}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
       out.write("</h1><button id='btn_report' class='btn btn-danger pull-right btn-large'>");
       if (_jspx_meth_spring_005fmessage_005f0(_jspx_page_context))
         return;
-      out.write("</button>\n");
-      out.write("\t        <div id='div_error' class='pull-right hide'></div>\n");
-      out.write("\t        <br /><br />\n");
-      out.write("\t        <hr />\n");
-      out.write("\t        <h1 class='topic blue medium'>Validation Error</h1>\n");
-      out.write("\t        <table class='table table-striped'>\n");
-      out.write("\t        \t<th>Error Code</th><th>Message</th>\n");
+      out.write("</button>\r\n");
+      out.write("\t        <div id='div_error' class='pull-right hide'></div>\r\n");
+      out.write("\t        <br /><br />\r\n");
+      out.write("\t        <hr />\r\n");
+      out.write("\t        <h1 class='topic blue medium'>Validation Error</h1>\r\n");
+      out.write("\t        <table class='table table-striped'>\r\n");
+      out.write("\t        \t<th>Error Code</th><th>Message</th>\r\n");
       out.write("\t        \t");
       if (_jspx_meth_c_005fforEach_005f0(_jspx_page_context))
         return;
-      out.write("\n");
-      out.write("\t        </table>\n");
-      out.write("\t        \n");
-      out.write("\t\t\t<hr />\n");
-      out.write("\t        <h1 class='topic blue medium'>Presentation Error</h1>\n");
-      out.write("\t        <table class='table table-striped'>\n");
-      out.write("\t        \t<th>Error Code</th><th>Message</th>\n");
+      out.write("\r\n");
+      out.write("\t        </table>\r\n");
+      out.write("\t        \r\n");
+      out.write("\t\t\t<hr />\r\n");
+      out.write("\t        <h1 class='topic blue medium'>Presentation Error</h1>\r\n");
+      out.write("\t        <table class='table table-striped'>\r\n");
+      out.write("\t        \t<th>Error Code</th><th>Message</th>\r\n");
       out.write("\t        \t");
       if (_jspx_meth_c_005fforEach_005f1(_jspx_page_context))
         return;
-      out.write("\n");
-      out.write("\t        </table>\n");
-      out.write("\t        \n");
-      out.write("\t        <hr />\n");
-      out.write("\t        <h1 class='topic blue medium'>Logic Error</h1>\n");
-      out.write("\t        <table class='table table-striped'>\n");
-      out.write("\t        \t<th>Error Code</th><th>Message</th>\n");
+      out.write("\r\n");
+      out.write("\t        </table>\r\n");
+      out.write("\t        \r\n");
+      out.write("\t        <hr />\r\n");
+      out.write("\t        <h1 class='topic blue medium'>Logic Error</h1>\r\n");
+      out.write("\t        <table class='table table-striped'>\r\n");
+      out.write("\t        \t<th>Error Code</th><th>Message</th>\r\n");
       out.write("\t        \t");
       if (_jspx_meth_c_005fforEach_005f2(_jspx_page_context))
         return;
-      out.write("\n");
-      out.write("\t        </table>\n");
-      out.write("\t        \n");
-      out.write("\t        <hr />\n");
-      out.write("\t        <h1 class='topic blue medium'>Persistence Error</h1>\n");
-      out.write("\t        <table class='table table-striped'>\n");
-      out.write("\t        \t<tr><th>Error Code</th><th>Message</th></tr>\n");
+      out.write("\r\n");
+      out.write("\t        </table>\r\n");
+      out.write("\t        \r\n");
+      out.write("\t        <hr />\r\n");
+      out.write("\t        <h1 class='topic blue medium'>Persistence Error</h1>\r\n");
+      out.write("\t        <table class='table table-striped'>\r\n");
+      out.write("\t        \t<tr><th>Error Code</th><th>Message</th></tr>\r\n");
       out.write("\t        \t");
       if (_jspx_meth_c_005fforEach_005f3(_jspx_page_context))
         return;
-      out.write("\n");
-      out.write("\t        </table>\n");
-      out.write("\t        \n");
-      out.write("\t        <hr />\n");
-      out.write("\t        <h1 class='topic blue medium'>Exception</h1>\n");
-      out.write("\t        <table class='table table-striped'>\n");
-      out.write("\t        \t<tr><th>Message</th></tr>\n");
+      out.write("\r\n");
+      out.write("\t        </table>\r\n");
+      out.write("\t        \r\n");
+      out.write("\t        <hr />\r\n");
+      out.write("\t        <h1 class='topic blue medium'>Exception</h1>\r\n");
+      out.write("\t        <table class='table table-striped'>\r\n");
+      out.write("\t        \t<tr><th>Message</th></tr>\r\n");
       out.write("\t        \t");
       if (_jspx_meth_c_005fforEach_005f4(_jspx_page_context))
         return;
-      out.write("\n");
-      out.write("\t        </table>\n");
-      out.write("        </div>\n");
-      out.write("        \n");
-      out.write("        <div id='div_success' class='well hide pull-center'>\n");
+      out.write("\r\n");
+      out.write("\t        </table>\r\n");
+      out.write("        </div>\r\n");
+      out.write("        \r\n");
+      out.write("        <div id='div_success' class='well hide pull-center'>\r\n");
       out.write("\t\t\t<h1 class='topic red big'>");
       if (_jspx_meth_spring_005fmessage_005f1(_jspx_page_context))
         return;
-      out.write("</h1>\n");
+      out.write("</h1>\r\n");
       out.write("\t\t\t<span>");
       if (_jspx_meth_spring_005fmessage_005f2(_jspx_page_context))
         return;
-      out.write("</span>\n");
-      out.write("\t\t</div>\n");
+      out.write("</span>\r\n");
+      out.write("\t\t</div>\r\n");
       out.write("        ");
-      out.write("\n");
-      out.write("    </div>\n");
-      out.write("</body>\n");
-      out.write("</html>\n");
+      out.write("\r\n");
+      out.write("    </div>\r\n");
+      out.write("</body>\r\n");
+      out.write("</html>\r\n");
     } catch (Throwable t) {
       if (!(t instanceof SkipPageException)){
         out = _jspx_out;
@@ -235,12 +237,12 @@ public final class show_jsp extends org.apache.jasper.runtime.HttpJspBase
       int _jspx_eval_c_005fforEach_005f0 = _jspx_th_c_005fforEach_005f0.doStartTag();
       if (_jspx_eval_c_005fforEach_005f0 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
         do {
-          out.write("\n");
+          out.write("\r\n");
           out.write("\t        \t\t<tr><td>");
           out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${ex.errorCode}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
           out.write("</td><td>");
           out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${ex.msg}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
-          out.write("</td></tr>\n");
+          out.write("</td></tr>\r\n");
           out.write("\t        \t");
           int evalDoAfterBody = _jspx_th_c_005fforEach_005f0.doAfterBody();
           if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
@@ -278,12 +280,12 @@ public final class show_jsp extends org.apache.jasper.runtime.HttpJspBase
       int _jspx_eval_c_005fforEach_005f1 = _jspx_th_c_005fforEach_005f1.doStartTag();
       if (_jspx_eval_c_005fforEach_005f1 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
         do {
-          out.write("\n");
+          out.write("\r\n");
           out.write("\t        \t\t<tr><td>");
           out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${ex.errorCode}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
           out.write("</td><td>");
           out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${ex.msg}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
-          out.write("</td></tr>\n");
+          out.write("</td></tr>\r\n");
           out.write("\t        \t");
           int evalDoAfterBody = _jspx_th_c_005fforEach_005f1.doAfterBody();
           if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
@@ -321,12 +323,12 @@ public final class show_jsp extends org.apache.jasper.runtime.HttpJspBase
       int _jspx_eval_c_005fforEach_005f2 = _jspx_th_c_005fforEach_005f2.doStartTag();
       if (_jspx_eval_c_005fforEach_005f2 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
         do {
-          out.write("\n");
+          out.write("\r\n");
           out.write("\t        \t\t<tr><td>");
           out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${ex.errorCode}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
           out.write("</td><td>");
           out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${ex.msg}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
-          out.write("</td></tr>\n");
+          out.write("</td></tr>\r\n");
           out.write("\t        \t");
           int evalDoAfterBody = _jspx_th_c_005fforEach_005f2.doAfterBody();
           if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
@@ -364,12 +366,12 @@ public final class show_jsp extends org.apache.jasper.runtime.HttpJspBase
       int _jspx_eval_c_005fforEach_005f3 = _jspx_th_c_005fforEach_005f3.doStartTag();
       if (_jspx_eval_c_005fforEach_005f3 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
         do {
-          out.write("\n");
+          out.write("\r\n");
           out.write("\t        \t\t<tr><td>");
           out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${ex.errorCode}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
           out.write("</td><td>");
           out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${ex.msg}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
-          out.write("</td></tr>\n");
+          out.write("</td></tr>\r\n");
           out.write("\t        \t");
           int evalDoAfterBody = _jspx_th_c_005fforEach_005f3.doAfterBody();
           if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
@@ -407,10 +409,10 @@ public final class show_jsp extends org.apache.jasper.runtime.HttpJspBase
       int _jspx_eval_c_005fforEach_005f4 = _jspx_th_c_005fforEach_005f4.doStartTag();
       if (_jspx_eval_c_005fforEach_005f4 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
         do {
-          out.write("\n");
+          out.write("\r\n");
           out.write("\t        \t\t<tr><td>");
           out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${ex}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
-          out.write("</td></tr>\n");
+          out.write("</td></tr>\r\n");
           out.write("\t        \t");
           int evalDoAfterBody = _jspx_th_c_005fforEach_005f4.doAfterBody();
           if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)

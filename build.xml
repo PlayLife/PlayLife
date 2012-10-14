@@ -1,0 +1,22 @@
+<?xml version="1.0" ?> 
+<project name="PlayLife" default="local">
+	<target name="deploy">
+		<war destfile="ROOT.war" webxml="WEB-INF/web.xml">
+		
+			<zipfileset dir="css" prefix="css"/>
+			<zipfileset dir="img" prefix="img"/>
+			<zipfileset dir="js" prefix="js"/>
+			<zipfileset dir="log" prefix="log"/>
+			<zipfileset dir="template" prefix="template"/>
+			<webinf dir="WEB-INF" includes="**/*.jsp, *.xml, *.properties"/>
+			
+			<fileset dir="." casesensitive="yes">
+			  <include name="**/*.jsp"/>
+			  <include name="**/*.ico"/>
+			</fileset>
+			
+			<classes dir="WEB-INF/classes"/>
+			<lib dir="WEB-INF/lib" />
+		</war>
+    </target>	
+</project>

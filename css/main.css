@@ -1,6 +1,9 @@
 body {
 	padding-top: 60px; /* When using the navbar-top-fixed */
-	background:#ffffff url('/img/bg.jpg') repeat right top;
+	background:#ffffff url('/img/bg.png') repeat right top;
+}
+.noNav {
+	padding-top: 0px; /* When using the navbar-top-fixed */
 }
 
 .blue{
@@ -64,3 +67,6 @@ input:not([type='button']):hover {
     text-align: center;
     margin-top: 100px;
 }
+
+@navbarBackground: #3D368B;
+@navbarBackgroundHighlight: #232051;

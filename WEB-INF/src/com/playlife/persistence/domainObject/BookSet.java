@@ -20,6 +20,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -194,9 +195,8 @@ public class BookSet implements Serializable{
 	@Column(name = "bookSetId", nullable=false, unique=true)
 	private Long bookSetId;
 	
-	@ManyToOne(fetch=FetchType.LAZY, cascade=CascadeType.ALL)
-	@JoinColumn(name="FK_BOOKID", nullable = true)
-	@org.hibernate.annotations.ForeignKey(name="FK_BOOKSET_BOOK")
+	@OneToOne(fetch=FetchType.LAZY, cascade= CascadeType.ALL)
+	@JoinColumn(name="fk_originalBookId")
 	private Book originalBook;
 	
 	@OneToMany(mappedBy="bookSet", fetch=FetchType.LAZY, cascade= CascadeType.ALL)

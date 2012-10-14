@@ -35,7 +35,7 @@ import com.playlife.utility.exceptions.LogicException;
 
 @Component
 @Qualifier("accessService")
-public class AccessService implements IAccessService{
+public class AccessService {
 	/************************
 	 * 						*
 	 * 		Variable		* 
@@ -86,7 +86,6 @@ public class AccessService implements IAccessService{
 	 * 	Implementation		* 
 	 * 						*
 	 ************************/
-	@Override
 	public PlayLifeUser checkUser(Long uid) throws LogicException {
 		PlayLifeUser user = playLifeUserDAO.get(uid);
 		if (user == null)
@@ -96,7 +95,6 @@ public class AccessService implements IAccessService{
 		return user;
 	}
 	
-	@Override
 	public Book checkBookExists(Long bid) throws LogicException {
 		Book book = bookDAO.get(bid);
 		if (book == null || book.getStatus() == Book_Status.Deleted)
@@ -106,7 +104,6 @@ public class AccessService implements IAccessService{
 		return book;
 	}
 
-	@Override
 	public Sheet checkSheetExists(Long sid) throws LogicException {
 		Sheet sheet = sheetDAO.get(sid);
 		if (sheet == null)
@@ -116,7 +113,6 @@ public class AccessService implements IAccessService{
 		return sheet;
 	}
 
-	@Override
 	public PhotoContent checkPhotoContentExists(Long pcid) throws LogicException {
 		PhotoContent photoContent = photoContentDAO.get(pcid);
 		if (photoContent == null)
@@ -126,7 +122,6 @@ public class AccessService implements IAccessService{
 		return photoContent;
 	}
 
-	@Override
 	public TextContent checkTextContentExists(Long tcid) throws LogicException {
 		TextContent textContent = textContentDAO.get(tcid);
 		if (textContent == null)
@@ -136,7 +131,6 @@ public class AccessService implements IAccessService{
 		return textContent;
 	}
 
-	@Override
 	public Address checkAddressExists(Long addressId) throws LogicException {
 		Address address = addressDAO.get(addressId);
 		if (address == null)
@@ -151,7 +145,15 @@ public class AccessService implements IAccessService{
 			throw new LogicException(-9999);
 	}
 	
-	@Override
+	public Book checkUserBook_owner(Long userId, Long bookId) throws LogicException {
+		List<Book> bookList = bookDAO.hql_find_ByBookIdAndUserId(bookId, userId);
+		if (bookList.size() == 0)
+			throw new LogicException(-9999);
+		if (bookList.size() > 1)
+			throw new LogicException(-9999);
+		return bookList.get(0);
+	}
+	
 	public void checkRegisterTrial(String ip) throws LogicException {
 		Date date = new Date();
 		
@@ -161,7 +163,6 @@ public class AccessService implements IAccessService{
 			throw new LogicException(-9999);
 	}
 
-	@Override
 	public void checkLoginTrial(String ip) throws LogicException {
 		Date date = new Date();
 		
@@ -171,25 +172,21 @@ public class AccessService implements IAccessService{
 			throw new LogicException(-9999);
 	}
 
-	@Override
 	public void checkUserSheet_owner(PlayLifeUser user, Sheet sheet) throws LogicException {
 		if (!sheet.getBook().getBookSet().getUser().getUserId().equals(user.getUserId()))
 			throw new LogicException(-9999);
 	}
 	
-	@Override
 	public void checkUserPhotoContent_owner(PlayLifeUser user, PhotoContent photoContent) throws LogicException {
 		if (!photoContent.getSheet().getBook().getBookSet().getUser().getUserId().equals(user.getUserId()))
 			throw new LogicException(-9999);
 	}
 
-	@Override
 	public void checkUserTextContent_owner(PlayLifeUser user, TextContent textContent) throws LogicException {
 		if (!textContent.getSheet().getBook().getBookSet().getUser().getUserId().equals(user.getUserId()))
 			throw new LogicException(-9999);
 	}
 
-	@Override
 	public Tag checkTagExists(Long tagId) throws LogicException {
 		Tag tag = tagDAO.get(tagId);
 		if (tag == null)
@@ -198,7 +195,6 @@ public class AccessService implements IAccessService{
 		return tag;
 	}
 
-	@Override
 	public Address getOrAddAddress(String name) throws LogicException {
 		List<Address> addressList = addressDAO.hql_find_ByName(name);
 		if (addressList.size() > 0)
@@ -211,7 +207,6 @@ public class AccessService implements IAccessService{
 		return address;
 	}
 
-	@Override
 	public Tag getOrAddTag(String name) throws LogicException {
 		List<Tag> tagList = tagDAO.hql_find_ByName(name);
 		if (tagList.size() > 0)
@@ -224,7 +219,6 @@ public class AccessService implements IAccessService{
 		return tag;
 	}
 
-	@Override
 	public Place getOrAddPlace(String name, String addressName, Place_Type type) throws LogicException {
 		List<Place> placeList = placeDAO.hql_find_ByNameAndAddressAndType(name, addressName, type);
 		if (placeList.size() > 0)
@@ -239,7 +233,6 @@ public class AccessService implements IAccessService{
 		return place;
 	}
 
-	@Override
 	public BookSet checkBookSetExists(Long bookSetId) throws LogicException {
 		BookSet bookSet = bookSetDAO.get(bookSetId);
 		if (bookSet == null || bookSet.getStatus().equals(Book_Status.Deleted))
@@ -248,7 +241,6 @@ public class AccessService implements IAccessService{
 		return bookSet;
 	}
 
-	@Override
 	public void checkUserBookSet_owner(PlayLifeUser user, BookSet bookSet) throws LogicException {
 		if (!bookSet.getUser().getUserId().equals(user.getUserId()))
 			throw new LogicException(-9999);

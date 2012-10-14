@@ -20,10 +20,13 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedNativeQueries;
 import javax.persistence.NamedNativeQuery;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.hibernate.annotations.NamedQueries;
+import org.hibernate.annotations.NamedQuery;
 import org.hibernate.annotations.Type;
 
 @Entity(name = "Book")
@@ -34,6 +37,11 @@ import org.hibernate.annotations.Type;
 		query = "call book_updateDeletedByBookSetId(:bookSetId);",
 		resultClass = Sheet.class
 	)
+})
+
+@NamedQueries({
+    @NamedQuery(name="Book.hql_find_ByBookIdAndUserId",
+                query="from Book b left join fetch b.originalBookSet where b.bookId = :bookId AND b.user.userId = :userId")
 })
 public class Book implements Serializable{
 	/****************
@@ -63,7 +71,9 @@ public class Book implements Serializable{
 	public Book(String title, boolean isOriginal, Locale locale, PlayLifeUser user){
 		this(title, isOriginal, Book_Privacy.Private, Book_Status.Normal, locale, user);
 	}
-
+	public Book(String title){
+		this(title, true, Book_Privacy.Private, Book_Status.Normal, Locale.getDefault(), null);
+	}
 	public Book(){
 		this(null, false, Book_Privacy.Unknown, Book_Status.Unknown, Locale.getDefault(), null);
 	}
@@ -151,6 +161,13 @@ public class Book implements Serializable{
 	public void setLanguage(Locale language) {
 		this.language = language;
 	}
+	public BookSet getOriginalBookSet() {
+		return originalBookSet;
+	}
+
+	public void setOriginalBookSet(BookSet originalBookSet) {
+		this.originalBookSet = originalBookSet;
+	}
 
 	/****************
 	 * 				*
@@ -189,6 +206,9 @@ public class Book implements Serializable{
 	
 	@OneToMany(mappedBy="book", fetch=FetchType.LAZY, cascade= CascadeType.ALL)
 	private Set<Sheet> sheets;
+	
+	@OneToOne(mappedBy="originalBook", fetch=FetchType.EAGER)
+	private BookSet originalBookSet;
 	
 	@ManyToOne(fetch=FetchType.LAZY, cascade={ CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH })
 	@JoinColumn(name="FK_BOOKSETID", nullable = false)

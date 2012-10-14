@@ -72,6 +72,7 @@ public final class accountSetting_jsp extends org.apache.jasper.runtime.HttpJspB
       out.write("<link rel=\"stylesheet\" type=\"text/css\" href=\"/css/jquery/jquery.jgrowl.css\" />\r\n");
       out.write("<link rel=\"stylesheet\" type=\"text/css\" href=\"/css/bootstrap/bootstrap.css\" />\r\n");
       out.write("<link rel=\"stylesheet\" type=\"text/css\" href=\"/css/bootstrap/bootstrap-responsive.css\" />\r\n");
+      out.write("<link rel=\"stylesheet\" type=\"text/css\" href=\"/css/bootstrap/datepicker.css\" />\r\n");
       out.write("<link rel=\"stylesheet\" type=\"text/css\" href=\"/css/main.css\" />\r\n");
       out.write("\r\n");
       out.write("<script src='/js/jquery/jquery-1.7.2.min.js'></script>\r\n");
@@ -84,6 +85,7 @@ public final class accountSetting_jsp extends org.apache.jasper.runtime.HttpJspB
       out.write("<script src='/js/jquery/jquery.livevalidation.js'></script>\r\n");
       out.write("<script src='/template/locale.js'></script>\r\n");
       out.write("<script src='/js/bootstrap/bootstrap.min.js'></script>\r\n");
+      out.write("<script src='/js/bootstrap/bootstrap-datepicker.js'></script>\r\n");
       out.write("<script src='/js/font/cufon-yui.js'></script>\r\n");
       out.write("<script src='/js/font/Needlework_Good.font.js'></script>\r\n");
       out.write("<script src='/js/main.js'></script>");

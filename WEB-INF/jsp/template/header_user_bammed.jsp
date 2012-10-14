@@ -5,7 +5,7 @@
 <div class="navbar navbar-fixed-top">
   <div class="navbar-inner">
     <div class="container">
-    	<a class="brand" href='/'><span class="topic red small">Play Life</span></a>
+    	<a class="brand" href='/'><span class="topic white small">Play Life</span></a>
     	<ul class='nav pull-left'> 
     	</ul><!-- /.nav .pull-left -->
     	<ul class='nav pull-right'> 

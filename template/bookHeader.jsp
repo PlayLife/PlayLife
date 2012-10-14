@@ -3,7 +3,7 @@
 <link rel="stylesheet" type="text/css" href="/css/bootstrap/bootstrap.css" />
 <link rel="stylesheet" type="text/css" href="/css/bootstrap/bootstrap-responsive.css" />
 <link rel="stylesheet" type="text/css" href="/css/bootstrap/datepicker.css" />
-<link rel="stylesheet" type="text/css" href="/css/main.css" />
+<link rel="stylesheet" type="text/css" href="/css/book/main.css" />
 
 <script src='/js/jquery/jquery-1.7.2.min.js'></script>
 <script src='/js/jquery/jquery-ui-1.8.17.custom.min.js'></script>
@@ -18,4 +18,4 @@
 <script src='/js/bootstrap/bootstrap-datepicker.js'></script>
 <script src='/js/font/cufon-yui.js'></script>
 <script src='/js/font/Needlework_Good.font.js'></script>
-<script src='/js/main.js'></script>
+<script src='/js/book/main.js'></script>

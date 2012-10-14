@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
-import com.playlife.logic.access.IAccessService;
+import com.playlife.logic.access.AccessService;
 import com.playlife.persistence.DAO.BookDAO;
 import com.playlife.persistence.DAO.BookSetDAO;
 import com.playlife.persistence.DAO.PhotoContentDAO;
@@ -30,7 +30,7 @@ import com.playlife.utility.exceptions.LogicException;
 public class BookService implements IBookService{
 	@Autowired
 	@Qualifier("accessService")
-	private IAccessService accessService;
+	private AccessService accessService;
 	@Autowired
 	@Qualifier("bookSetDAO")
 	private BookSetDAO bookSetDAO;
@@ -52,10 +52,14 @@ public class BookService implements IBookService{
 		try {
 			PlayLifeUser user = accessService.checkUser(old_user.getUserId());
 			BookSet bookSet = new BookSet(new_bookSet.getStartDate(), new_bookSet.getEndDate(), new_bookSet.getCoverPhoto(), new_bookSet.getCost(), new_bookSet.getTravelWith(), user);
-			Book book = new Book(new_bookSet.getOriginalBook().getTitle(), true, user.getLanguage(), user);
-			book.setBookSet(bookSet);
-			bookSet.addBook(book);
-			user.addBookSet(bookSet);
+			if (new_bookSet.getOriginalBook() != null){
+				Book book = new Book(new_bookSet.getOriginalBook().getTitle(), true, user.getLanguage(), user);
+				book.setBookSet(bookSet);
+				bookSet.addBook(book);
+				user.addBookSet(bookSet);
+				
+				bookSet.setOriginalBook(book);
+			}
 			bookSetDAO.save(bookSet);
 			
 			return bookSet;

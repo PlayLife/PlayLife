@@ -17,13 +17,17 @@ function block(){
 function unblock(){
 	$.unblockUI();
 }
-
+function getDateFormat(){
+	return 'dd/mm/yyyy';
+}
 $(document).ready(function(){
 	cufon();
 	
 	var page_name = window.location.pathname.substring(1);
 	if (page_name != '')
 		$('li a[href$="/' + page_name + '"]').parent().addClass('active');
+	
+	$('.date > input').datepicker({format: getDateFormat()});
 });
 
 var MD5 = function (string) {

@@ -5,9 +5,10 @@
 <div class="navbar navbar-fixed-top">
   <div class="navbar-inner">
     <div class="container">
-    	<a class="brand" href='/'><span class="topic red small">Play Life</span></a>
+    	<a class="brand" href='/'><span class="topic white small">Play Life</span></a>
     	<ul class='nav pull-left'> 
     		<li><a class='userFunction' href='/admin/'><spring:message code="userFunction.admin"/></a></li>
+    		<li><a class='userFunction' href='/book/create'><spring:message code="userFunction.createBook"/></a></li>
     	</ul><!-- /.nav .pull-left -->
     	<ul class='nav pull-right'>
 			<li class="dropdown">
