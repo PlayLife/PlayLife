@@ -211,7 +211,7 @@ public class Book implements Serializable{
 	private BookSet originalBookSet;
 	
 	@ManyToOne(fetch=FetchType.LAZY, cascade={ CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH })
-	@JoinColumn(name="FK_BOOKSETID", nullable = false)
+	@JoinColumn(name="FK_BOOKSETID", nullable = true)
 	@org.hibernate.annotations.ForeignKey(name="FK_BOOKSET_BOOK")
 	private BookSet bookSet;
 	

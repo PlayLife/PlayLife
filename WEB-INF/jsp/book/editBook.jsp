@@ -23,10 +23,14 @@
 			</ul>
 			<div class="tab-content">
 				<div class="tab-pane active" id="div_photoContainer_facebook">
-				aaa
+					<div id='div_photo_facebook_list' class='div_photo_facebook_list hide'>
+					
+					</div>
+					<div id='div_photo_facebook_login'>
+						<img src='/img/icon_facebook.png'/><span class='topic medium blue'> Login with Facebook</span>
+					</div>
 				</div>
 				<div class="tab-pane" id="div_photoContainer_playlife">
-				aa
 				</div>
 			</div>
 		</div>

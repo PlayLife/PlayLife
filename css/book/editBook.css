@@ -1,0 +1,89 @@
+.div_photo_facebook_album span{
+	width: 100px;
+	height: 15px;
+	overflow: hidden;
+	text-overflow:ellipsis;
+	display: inline-block;
+}
+	
+.div_photo_facebook_album_inner img{
+	width:100px;
+}
+.div_photo_facebook_album_inner{
+	width:100px;
+	height: 100px;
+	overflow: hidden;
+	margin-left: 10px;
+}
+.div_photo_facebook_album{
+	width:120px;
+	vertical-align: top;
+	text-align: center;
+	border: 1px dotted black;
+	margin: 5px;
+	padding: 5px;
+	background-color: #A52A2A;
+	float:left;
+}
+.div_photo_facebook_album_next{
+	background-color: #800000;
+}
+.div_photo_facebook_album_padding{
+	padding: 5px;
+	float:left;
+}
+.div_photo_facebook_album_container{
+	width: 10000px;
+}
+.div_photo_facebook_list{
+	height: 160px;
+	overflow-x: scroll;
+	overflow-y: hidden;
+}
+/* Scrollbar
+----------------------------------------------------------------------------------------------------*/	
+
+@media only screen and (-webkit-min-device-pixel-ratio: 0) and (min-device-width: 1025px) {
+	html { 	overflow: hidden; }
+	body {
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		right: 12px;
+		top: 0;
+		overflow-y: auto;
+		overflow-x: hidden;
+	}
+	
+	::-webkit-scrollbar {
+		width: 6px;
+		height: 6px;
+	}
+	
+	::-webkit-scrollbar-button:start:decrement,
+	::-webkit-scrollbar-button:end:increment {
+		display: block;
+		height: 10px;
+	}
+	
+	::-webkit-scrollbar-button:vertical:increment {
+		background-color: #fff;
+	}
+	
+	::-webkit-scrollbar-track-piece {
+		background-color: #eee;
+		-webkit-border-radius: 3px;
+	}
+	
+	::-webkit-scrollbar-thumb:vertical {
+		height: 50px;
+		background-color: #ccc;
+		-webkit-border-radius: 3px;
+	}
+	
+	::-webkit-scrollbar-thumb:horizontal {
+		width: 50px;
+		background-color: #ccc;
+		-webkit-border-radius: 3px;
+	}
+}

@@ -8,3 +8,50 @@
 	margin: auto;
 	width: 960px;
 }
+
+
+.blue{
+	color: #08C;
+}
+
+.red{
+	color: #BF2E23;
+}
+
+.white {
+	color: #ffffff;
+}
+
+.big {
+	font-size : 40px;
+}
+
+.small {
+	font-size : 16px;
+}
+.verySmall {
+	font-size : 12px;
+}
+.medium {
+	font-size : 20px;
+}
+
+.padding_small {
+	padding : 6px;
+}
+
+.bold {
+	font-weight: bold;
+}
+.shadow {
+    -moz-box-shadow:6px 6px 6px #707070; /* Firefox */
+    -webkit-box-shadow:6px 6px 6px #707070;; /* Chrome */
+    box-shadow: 6px 6px 6px #707070; /* IE and Opera */
+}
+
+.round {
+    /* Rounded Corners */
+    -moz-border-radius: 6px; /* Firefox */
+    -webkit-border-radius: 6px; /* Chrome */
+ 	border-radius: 6px; /* IE and Opera */
+}

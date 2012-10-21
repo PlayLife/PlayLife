@@ -57,8 +57,10 @@ public class BookService implements IBookService{
 				book.setBookSet(bookSet);
 				bookSet.addBook(book);
 				user.addBookSet(bookSet);
+				bookSet.setUser(user);
 				
 				bookSet.setOriginalBook(book);
+				book.setOriginalBookSet(bookSet);
 			}
 			bookSetDAO.save(bookSet);
 			
